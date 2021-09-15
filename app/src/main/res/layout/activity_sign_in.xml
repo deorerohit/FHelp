@@ -105,7 +105,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:text="Sign Up"
-            android:textColor="#4b96fa" />
+            android:textColor="#4b96fa"
+            android:onClick="callSingUp"/>
 
     </LinearLayout>
 </LinearLayout>
