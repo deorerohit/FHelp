@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="25dp"
-    tools:context=".SignUp">
+    tools:context=".signUp">
 
     <TextView
         android:layout_width="match_parent"
@@ -94,6 +94,7 @@
         android:text="Create Account"
         android:textAllCaps="false"
         android:textSize="22sp"
-        app:cornerRadius="5dp" />
+        app:cornerRadius="5dp"
+        android:onClick="createAccount"/>
 
 </LinearLayout>

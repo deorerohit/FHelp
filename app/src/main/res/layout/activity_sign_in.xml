@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="25dp"
-    tools:context=".SignIn">
+    tools:context=".signIn">
 
 
     <LinearLayout
@@ -83,11 +83,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="35dp"
-        android:padding="12dp"
+        android:padding="10dp"
         android:text="Login"
         android:textAllCaps="false"
         android:textSize="22sp"
-        app:cornerRadius="5dp" />
+        app:cornerRadius="28sp" />
 
     <LinearLayout
         android:layout_width="wrap_content"

@@ -6,7 +6,7 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class SignIn extends AppCompatActivity {
+public class signIn extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,6 +15,6 @@ public class SignIn extends AppCompatActivity {
     }
 
     public void callSingUp(View view) {
-        startActivity(new Intent(SignIn.this, SignUp.class));
+        startActivity(new Intent(signIn.this, signUp.class));
     }
 }

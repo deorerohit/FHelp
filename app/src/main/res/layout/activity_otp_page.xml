@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".otpPage"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="Enter the One Time Password sent on"
+        android:textAlignment="center"
+        android:textSize="14sp"/>
+
+    <TextView
+        android:id="@+id/noToDisplay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:textAlignment="center"
+        android:textSize="14sp"/>
+
+    <com.chaos.view.PinView
+        android:id="@+id/pinView"
+        android:layout_marginTop="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        app:itemCount="6"
+        app:itemHeight="40dp"
+        app:itemWidth="40dp"
+        style="@style/PinWidget.PinView"
+        app:itemRadius="5dp"
+        app:lineColor="@color/purple_700"
+        android:cursorVisible="true"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/verifyOTP"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Verify OTP"
+        android:textAllCaps="false"
+        android:textSize="22sp"
+        android:padding="10dp"
+        android:onClick="onClickVerifyOTP"
+        android:layout_margin="15dp"
+        app:cornerRadius="20sp"
+        android:layout_marginTop="60dp"/>
+
+
+</LinearLayout>
