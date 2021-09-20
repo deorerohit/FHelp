@@ -16,7 +16,7 @@
         android:textSize="14sp"/>
 
     <TextView
-        android:id="@+id/noToDisplay"
+        android:id="@+id/otp_noToDisplay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
@@ -24,7 +24,7 @@
         android:textSize="14sp"/>
 
     <com.chaos.view.PinView
-        android:id="@+id/pinView"
+        android:id="@+id/otp_pinView"
         android:layout_marginTop="15dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -45,7 +45,7 @@
         android:textAllCaps="false"
         android:textSize="22sp"
         android:padding="10dp"
-        android:onClick="onClickVerifyOTP"
+        android:onClick="verifyOtp"
         android:layout_margin="15dp"
         app:cornerRadius="20sp"
         android:layout_marginTop="60dp"/>
