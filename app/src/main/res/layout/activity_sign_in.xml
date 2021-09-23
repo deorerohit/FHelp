@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="25dp"
-    tools:context=".signIn">
+    tools:context=".SignIn">
 
 
     <LinearLayout
@@ -35,7 +35,7 @@
             android:fontFamily="sans-serif-black"
             android:paddingBottom="0dp"
             android:text="Help"
-            android:textColor="#130804"
+            android:textColor="@color/purple_200"
             android:textSize="50sp" />
     </LinearLayout>
 
@@ -54,12 +54,13 @@
         android:layout_height="wrap_content">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/mob_no"
+            android:id="@+id/sing_in_mob_no"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="Mobile No."
+            android:inputType="phone"
             android:textColor="@color/purple_500"
-            android:textSize="14sp" />
+            android:textSize="18sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -70,19 +71,21 @@
         app:passwordToggleEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/pass"
+            android:id="@+id/sign_in_pass"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="Password"
             android:inputType="textPassword"
             android:textColor="@color/purple_500"
-            android:textSize="14sp" />
+            android:textSize="18sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="35dp"
+        android:fontFamily="sans-serif-black"
+        android:onClick="loginButton"
         android:padding="10dp"
         android:text="Login"
         android:textAllCaps="false"
@@ -93,20 +96,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:layout_marginTop="8dp"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Don't have an account?" />
+            android:text="Don't have an account?"
+            android:textSize="16sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
+            android:onClick="callSingUp"
             android:text="Sign Up"
             android:textColor="#4b96fa"
-            android:onClick="callSingUp"/>
+            android:textSize="16sp" />
 
     </LinearLayout>
 </LinearLayout>

@@ -24,7 +24,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.concurrent.TimeUnit;
 
-public class otpPage extends AppCompatActivity {
+public class OtpPage extends AppCompatActivity {
 
     TextView noToDisplay;
     PinView pinView;
@@ -83,7 +83,7 @@ public class otpPage extends AppCompatActivity {
 
                 @Override
                 public void onVerificationFailed(@NonNull FirebaseException e) {
-                    Toast.makeText(otpPage.this, e.getMessage(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(OtpPage.this, e.getMessage(), Toast.LENGTH_LONG).show();
                 }
             };
 
@@ -91,7 +91,7 @@ public class otpPage extends AppCompatActivity {
     public void verifyOtp(View view) {
         String code = pinView.getText().toString().trim();
         if (code.isEmpty()) {
-            Toast.makeText(otpPage.this, "Enter OTP", Toast.LENGTH_LONG).show();
+            Toast.makeText(OtpPage.this, "Enter OTP", Toast.LENGTH_LONG).show();
         } else {
             verifyCode(code);
         }
@@ -115,12 +115,12 @@ public class otpPage extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
 
                 if (task.isSuccessful()) {
-                    Toast.makeText(otpPage.this, "Verification Completed", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(OtpPage.this, "Verification Completed", Toast.LENGTH_SHORT).show();
                     writeDataToFirebase();
-                    startActivity(new Intent(otpPage.this, signIn.class));
+                    startActivity(new Intent(OtpPage.this, SignIn.class));
                     finish();
                 } else if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
-                    Toast.makeText(otpPage.this, "Verification not completed!! Try again", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(OtpPage.this, "Verification not completed!! Try again", Toast.LENGTH_SHORT).show();
                 }
             }
         });

@@ -9,11 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FarmHelp">
-        <activity android:name=".otpPage"></activity>
+        <activity android:name=".ActivityAfterLogIn"></activity>
+        <activity android:name=".OtpPage" />
         <activity
-            android:name=".signUp"
-            android:parentActivityName=".signIn" />
-        <activity android:name=".signIn">
+            android:name=".SignUp"
+            android:parentActivityName=".SignIn" />
+        <activity android:name=".SignIn">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

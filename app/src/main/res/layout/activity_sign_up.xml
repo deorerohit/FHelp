@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="25dp"
-    tools:context=".signUp">
+    tools:context=".SignUp">
 
     <TextView
         android:layout_width="match_parent"
@@ -29,12 +29,12 @@
         android:layout_marginTop="25dp">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/sign_up_mob"
+            android:id="@+id/sign_up_name"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="Name"
             android:textColor="@color/purple_500"
-            android:textSize="14sp" />
+            android:textSize="18sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -44,12 +44,13 @@
         android:layout_marginTop="8dp">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/sign_up_name"
+            android:id="@+id/sign_up_mob"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="Mobile No."
+            android:inputType="phone"
             android:textColor="@color/purple_500"
-            android:textSize="14sp" />
+            android:textSize="18sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -66,7 +67,7 @@
             android:hint="Password"
             android:inputType="textPassword"
             android:textColor="@color/purple_500"
-            android:textSize="14sp" />
+            android:textSize="18sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -83,18 +84,19 @@
             android:hint="Confirm Password"
             android:inputType="textPassword"
             android:textColor="@color/purple_500"
-            android:textSize="14sp" />
+            android:textSize="18sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="45dp"
-        android:padding="12dp"
+        android:layout_marginTop="35dp"
+        android:fontFamily="sans-serif-black"
+        android:onClick="createAccount"
+        android:padding="10dp"
         android:text="Create Account"
         android:textAllCaps="false"
         android:textSize="22sp"
-        app:cornerRadius="5dp"
-        android:onClick="createAccount"/>
+        app:cornerRadius="28sp" />
 
 </LinearLayout>

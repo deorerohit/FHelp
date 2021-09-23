@@ -4,8 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".otpPage"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="25dp"
+    tools:context=".OtpPage">
 
     <TextView
         android:layout_width="match_parent"
@@ -13,42 +14,42 @@
         android:layout_marginTop="25dp"
         android:text="Enter the One Time Password sent on"
         android:textAlignment="center"
-        android:textSize="14sp"/>
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/otp_noToDisplay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
+        android:fontFamily="sans-serif-black"
         android:textAlignment="center"
-        android:textSize="14sp"/>
+        android:textSize="18sp" />
 
     <com.chaos.view.PinView
         android:id="@+id/otp_pinView"
-        android:layout_marginTop="15dp"
+        style="@style/PinWidget.PinView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:layout_marginTop="15dp"
+        android:cursorVisible="true"
         app:itemCount="6"
-        app:itemHeight="40dp"
-        app:itemWidth="40dp"
-        style="@style/PinWidget.PinView"
+        app:itemHeight="50dp"
         app:itemRadius="5dp"
-        app:lineColor="@color/purple_700"
-        android:cursorVisible="true"/>
+        app:itemWidth="50dp"
+        app:lineColor="@color/purple_700" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/verifyOTP"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:fontFamily="sans-serif-black"
+        android:onClick="verifyOtp"
+        android:padding="10dp"
         android:text="Verify OTP"
         android:textAllCaps="false"
         android:textSize="22sp"
-        android:padding="10dp"
-        android:onClick="verifyOtp"
-        android:layout_margin="15dp"
-        app:cornerRadius="20sp"
-        android:layout_marginTop="60dp"/>
+        app:cornerRadius="28sp" />
 
 
 </LinearLayout>
