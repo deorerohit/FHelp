@@ -1,4 +1,4 @@
-package be.project.farmhelp;
+package be.project.farmhelp.Authentication;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,6 +23,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.concurrent.TimeUnit;
+
+import be.project.farmhelp.R;
 
 public class OtpPage extends AppCompatActivity {
 

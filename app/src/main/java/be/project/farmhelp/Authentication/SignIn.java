@@ -1,4 +1,4 @@
-package be.project.farmhelp;
+package be.project.farmhelp.Authentication;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -21,6 +21,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+
+import be.project.farmhelp.ActivityAfterLogIn;
+import be.project.farmhelp.R;
 
 public class SignIn extends AppCompatActivity {
 
@@ -136,6 +139,5 @@ public class SignIn extends AppCompatActivity {
 
     public void callSingUp(View view) {
         startActivity(new Intent(SignIn.this, SignUp.class));
-        finish();
     }
 }

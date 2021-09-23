@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="25dp"
-    tools:context=".SignIn">
+    tools:context=".Authentication.SignIn">
 
 
     <LinearLayout
@@ -26,7 +26,7 @@
             android:paddingBottom="0dp"
             android:text="Farm"
             android:textColor="#2A8E2E"
-            android:textSize="50sp" />
+            android:textSize="60sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -36,7 +36,7 @@
             android:paddingBottom="0dp"
             android:text="Help"
             android:textColor="@color/purple_200"
-            android:textSize="50sp" />
+            android:textSize="60sp" />
     </LinearLayout>
 
     <TextView
@@ -45,8 +45,10 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="0dp"
         android:layout_marginBottom="40dp"
+        android:fontFamily="cursive"
         android:paddingTop="0dp"
-        android:text="Farming made easy" />
+        android:text="Farming made easy"
+        android:textSize="18sp" />
 
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"

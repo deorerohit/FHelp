@@ -1,4 +1,4 @@
-package be.project.farmhelp;
+package be.project.farmhelp.Authentication;
 
 public class WriteThisClassToFirebase {
 

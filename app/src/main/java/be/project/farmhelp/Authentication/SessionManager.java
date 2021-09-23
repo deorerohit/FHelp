@@ -1,4 +1,4 @@
-package be.project.farmhelp;
+package be.project.farmhelp.Authentication;
 
 import android.content.Context;
 import android.content.SharedPreferences;
