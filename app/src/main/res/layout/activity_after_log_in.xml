@@ -11,7 +11,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Welcome boy"
+        android:text="@string/welcome_boy"
         android:textAlignment="center"
         android:textSize="20sp" />
 
@@ -21,7 +21,7 @@
         android:layout_marginTop="35dp"
         android:fontFamily="sans-serif-black"
         android:padding="10dp"
-        android:text="Log Out"
+        android:text="@string/log_out"
         android:onClick="logOut"
         android:textAllCaps="false"
         android:textSize="22sp"

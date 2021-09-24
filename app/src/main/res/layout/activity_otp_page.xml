@@ -6,13 +6,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="25dp"
-    tools:context=".Authentication.OtpPage">
+    tools:context=".authentication.OtpPage">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
-        android:text="Enter the One Time Password sent on"
+        android:text="@string/enter_the_one_time_password_sent_on"
         android:textAlignment="center"
         android:textSize="18sp" />
 
@@ -46,7 +46,7 @@
         android:fontFamily="sans-serif-black"
         android:onClick="verifyOtp"
         android:padding="10dp"
-        android:text="Verify OTP"
+        android:text="@string/verify_otp"
         android:textAllCaps="false"
         android:textSize="22sp"
         app:cornerRadius="28sp" />

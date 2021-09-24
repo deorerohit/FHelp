@@ -1,4 +1,4 @@
-package be.project.farmhelp.Authentication;
+package be.project.farmhelp.authentication;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -129,12 +129,9 @@ public class OtpPage extends AppCompatActivity {
     }
 
     private void writeDataToFirebase() {
-
         WriteThisClassToFirebase userDataClass = new WriteThisClassToFirebase(name, mobNo, password);
-
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference reference = database.getReference("Users");
-
         reference.child(mobNo).setValue(userDataClass);
     }
 

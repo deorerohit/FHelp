@@ -1,8 +1,8 @@
-package be.project.farmhelp.Authentication;
+package be.project.farmhelp.authentication;
 
 public class WriteThisClassToFirebase {
 
-    private String name, mobNo, password;
+    private String name, mobNo, password, latitude, longitude;
 
     public WriteThisClassToFirebase(String name, String mobNo, String password) {
         this.name = name;
@@ -32,5 +32,21 @@ public class WriteThisClassToFirebase {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
     }
 }

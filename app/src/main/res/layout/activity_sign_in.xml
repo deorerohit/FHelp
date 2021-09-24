@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="25dp"
-    tools:context=".Authentication.SignIn">
+    tools:context=".authentication.SignIn">
 
 
     <LinearLayout
@@ -24,7 +24,7 @@
             android:layout_marginBottom="0dp"
             android:fontFamily="sans-serif-black"
             android:paddingBottom="0dp"
-            android:text="Farm"
+            android:text="@string/farm"
             android:textColor="#2A8E2E"
             android:textSize="60sp" />
 
@@ -34,7 +34,7 @@
             android:layout_marginBottom="0dp"
             android:fontFamily="sans-serif-black"
             android:paddingBottom="0dp"
-            android:text="Help"
+            android:text="@string/help"
             android:textColor="@color/purple_200"
             android:textSize="60sp" />
     </LinearLayout>
@@ -47,7 +47,7 @@
         android:layout_marginBottom="40dp"
         android:fontFamily="cursive"
         android:paddingTop="0dp"
-        android:text="Farming made easy"
+        android:text="@string/farming_made_easy"
         android:textSize="18sp" />
 
     <com.google.android.material.textfield.TextInputLayout
@@ -59,7 +59,7 @@
             android:id="@+id/sing_in_mob_no"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="Mobile No."
+            android:hint="@string/mobile_no"
             android:inputType="phone"
             android:textColor="@color/purple_500"
             android:textSize="18sp" />
@@ -76,7 +76,7 @@
             android:id="@+id/sign_in_pass"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="Password"
+            android:hint="@string/password"
             android:inputType="textPassword"
             android:textColor="@color/purple_500"
             android:textSize="18sp" />
@@ -89,7 +89,7 @@
         android:fontFamily="sans-serif-black"
         android:onClick="loginButton"
         android:padding="10dp"
-        android:text="Login"
+        android:text="@string/login"
         android:textAllCaps="false"
         android:textSize="22sp"
         app:cornerRadius="28sp" />
@@ -104,7 +104,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Don't have an account?"
+            android:text="@string/don_t_have_an_account"
             android:textSize="16sp" />
 
         <TextView
@@ -112,7 +112,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:onClick="callSingUp"
-            android:text="Sign Up"
+            android:text="@string/sign_up"
             android:textColor="#4b96fa"
             android:textSize="16sp" />
 

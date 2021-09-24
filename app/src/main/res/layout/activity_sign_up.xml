@@ -6,19 +6,19 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="25dp"
-    tools:context=".Authentication.SignUp">
+    tools:context=".authentication.SignUp">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-black"
-        android:text="Welcome"
+        android:text="@string/welcome"
         android:textSize="40sp" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Please fill the details to continue"
+        android:text="@string/please_fill_the_details_to_continue"
         android:textSize="18sp" />
 
 
@@ -32,7 +32,7 @@
             android:id="@+id/sign_up_name"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="Name"
+            android:hint="@string/name"
             android:textColor="@color/purple_500"
             android:textSize="18sp" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -47,7 +47,7 @@
             android:id="@+id/sign_up_mob"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="Mobile No."
+            android:hint="@string/mobile_no"
             android:inputType="phone"
             android:textColor="@color/purple_500"
             android:textSize="18sp" />
@@ -64,7 +64,7 @@
             android:id="@+id/sign_up_pass"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="Password"
+            android:hint="@string/password"
             android:inputType="textPassword"
             android:textColor="@color/purple_500"
             android:textSize="18sp" />
@@ -81,7 +81,7 @@
             android:id="@+id/sign_up_confirm_pass"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="Confirm Password"
+            android:hint="@string/confirm_password"
             android:inputType="textPassword"
             android:textColor="@color/purple_500"
             android:textSize="18sp" />
@@ -94,7 +94,7 @@
         android:fontFamily="sans-serif-black"
         android:onClick="createAccount"
         android:padding="10dp"
-        android:text="Create Account"
+        android:text="@string/create_account"
         android:textAllCaps="false"
         android:textSize="22sp"
         app:cornerRadius="28sp" />

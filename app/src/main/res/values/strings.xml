@@ -1,4 +1,22 @@
 <resources>
     <string name="app_name">FarmHelp</string>
+    <string name="welcome_boy">Welcome boy</string>
+    <string name="log_out">Log Out</string>
+    <string name="mobile_no">Mobile No.</string>
+    <string name="farming_made_easy">Farming made easy</string>
+    <string name="help">Help</string>
+    <string name="farm">Farm</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="don_t_have_an_account">Don\'t have an account?</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="welcome">Welcome</string>
+    <string name="please_fill_the_details_to_continue">Please fill the details to continue</string>
+    <string name="name">Name</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="create_account">Create Account</string>
+    <string name="enter_the_one_time_password_sent_on">Enter the One Time Password sent on</string>
+    <string name="verify_otp">Verify OTP</string>
+    <string name="map_api_key">AIzaSyCXVuuhkXrwlGMnPSS30peUHY0d3WulN84</string>
 
 </resources>
