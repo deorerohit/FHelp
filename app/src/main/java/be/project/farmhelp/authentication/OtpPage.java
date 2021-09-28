@@ -1,6 +1,9 @@
 package be.project.farmhelp.authentication;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Location;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -8,9 +11,12 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 import com.chaos.view.PinView;
+import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.AuthResult;
@@ -32,6 +38,9 @@ public class OtpPage extends AppCompatActivity {
     PinView pinView;
     String codeInFirebase;
     private String name, mobNo, password;
+    private double latitude;
+    private double longitude;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +58,23 @@ public class OtpPage extends AppCompatActivity {
 
         noToDisplay.setText(mobNo);
         sendVerificationCodeToUser(mobNo);
+        getCurrentLocation();
+    }
+
+    private void getCurrentLocation() {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            return;
+        }
+        Task<Location> task = SignIn.client.getLastLocation();
+        task.addOnSuccessListener(new OnSuccessListener<Location>() {
+            @Override
+            public void onSuccess(Location location) {
+                if (location != null) {
+                    latitude = location.getLatitude();
+                    longitude = location.getLongitude();
+                }
+            }
+        });
     }
 
     private void sendVerificationCodeToUser(String number) {
@@ -129,7 +155,7 @@ public class OtpPage extends AppCompatActivity {
     }
 
     private void writeDataToFirebase() {
-        WriteThisClassToFirebase userDataClass = new WriteThisClassToFirebase(name, mobNo, password);
+        WriteThisClassToFirebase userDataClass = new WriteThisClassToFirebase(name, mobNo, password, latitude, longitude);
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference reference = database.getReference("Users");
         reference.child(mobNo).setValue(userDataClass);

@@ -2,12 +2,15 @@ package be.project.farmhelp.authentication;
 
 public class WriteThisClassToFirebase {
 
-    private String name, mobNo, password, latitude, longitude;
+    private String name, mobNo, password;
+    private double latitude, longitude;
 
-    public WriteThisClassToFirebase(String name, String mobNo, String password) {
+    public WriteThisClassToFirebase(String name, String mobNo, String password, double latitude, double longitude) {
         this.name = name;
         this.mobNo = mobNo;
         this.password = password;
+        this.latitude = latitude;
+        this.longitude = longitude;
     }
 
     public String getName() {
@@ -34,19 +37,19 @@ public class WriteThisClassToFirebase {
         this.password = password;
     }
 
-    public String getLatitude() {
+    public double getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(String latitude) {
+    public void setLatitude(double latitude) {
         this.latitude = latitude;
     }
 
-    public String getLongitude() {
+    public double getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(String longitude) {
+    public void setLongitude(double longitude) {
         this.longitude = longitude;
     }
 }
