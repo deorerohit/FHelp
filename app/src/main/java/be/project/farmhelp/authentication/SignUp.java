@@ -21,7 +21,6 @@ import be.project.farmhelp.R;
 public class SignUp extends AppCompatActivity {
 
     TextInputEditText name, mobNo, pass, confirmPass;
-    boolean userExists = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +65,6 @@ public class SignUp extends AppCompatActivity {
         String _pass = pass.getText().toString().trim();
         String _confirmPass = confirmPass.getText().toString().trim();
 
-
         if (TextUtils.isEmpty(_name)) {
             name.setError("Cannot be Empty");
             return;
@@ -95,9 +93,6 @@ public class SignUp extends AppCompatActivity {
             confirmPass.setError("Password not matching");
             return;
         }
-
         doesUserExists("+91 " + _mobNo);
-
-
     }
 }

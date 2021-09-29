@@ -17,6 +17,5 @@
     <string name="create_account">Create Account</string>
     <string name="enter_the_one_time_password_sent_on">Enter the One Time Password sent on</string>
     <string name="verify_otp">Verify OTP</string>
-    <string name="map_api_key">AIzaSyCXVuuhkXrwlGMnPSS30peUHY0d3WulN84</string>
 
 </resources>
