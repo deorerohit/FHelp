@@ -21,7 +21,7 @@ public class ActivityAfterLogIn extends AppCompatActivity {
 
     public void logOut(View view) {
         currentUser = new SessionManager(getApplicationContext());
-        currentUser.logOutUserFromSession();
+       // currentUser.logOutUserFromSession();
         startActivity(new Intent(ActivityAfterLogIn.this, GoogleMapActivity.class));
         finish();
     }

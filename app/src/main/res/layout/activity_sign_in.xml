@@ -26,7 +26,7 @@
             android:paddingBottom="0dp"
             android:text="@string/farm"
             android:textColor="#2A8E2E"
-            android:textSize="60sp" />
+            android:textSize="40sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -36,7 +36,7 @@
             android:paddingBottom="0dp"
             android:text="@string/help"
             android:textColor="@color/purple_200"
-            android:textSize="60sp" />
+            android:textSize="40sp" />
     </LinearLayout>
 
     <TextView
@@ -62,7 +62,7 @@
             android:hint="@string/mobile_no"
             android:inputType="phone"
             android:textColor="@color/purple_500"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -79,7 +79,7 @@
             android:hint="@string/password"
             android:inputType="textPassword"
             android:textColor="@color/purple_500"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
@@ -91,7 +91,7 @@
         android:padding="10dp"
         android:text="@string/login"
         android:textAllCaps="false"
-        android:textSize="22sp"
+        android:textSize="20sp"
         app:cornerRadius="28sp" />
 
     <LinearLayout

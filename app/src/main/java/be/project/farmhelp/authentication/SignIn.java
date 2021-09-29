@@ -34,7 +34,7 @@ public class SignIn extends AppCompatActivity {
 
     TextInputEditText mobNo, password;
     SessionManager currentUser;
-    static FusedLocationProviderClient client;
+
     private boolean isNktConnected = false;
     String enteredNumber, enteredPassword;
     private static final int REQUEST_CODE = 111;
@@ -48,7 +48,6 @@ public class SignIn extends AppCompatActivity {
         mobNo = findViewById(R.id.sing_in_mob_no);
         password = findViewById(R.id.sign_in_pass);
 
-        client = LocationServices.getFusedLocationProviderClient(SignIn.this);
         if (ActivityCompat.checkSelfPermission(SignIn.this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_DENIED) {
             ActivityCompat.requestPermissions(SignIn.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_CODE);
         }
