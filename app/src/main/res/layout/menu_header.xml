@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:background="@color/teal_200">
+    <TextView
+        android:id="@+id/menutitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/menuslogan"
+        android:layout_marginStart="20dp"
+        android:elevation="2dp"
+        android:fontFamily="sans-serif-black"
+        android:text="@string/know_more"
+        android:textSize="30sp" />
+    <TextView
+        android:elevation="2dp"
+        android:id="@+id/menuslogan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="@font/reemkufiregular"
+        android:text="@string/quote"
+        android:textColor="@color/purple_700"
+        android:textSize="18sp" />
+
+</RelativeLayout>

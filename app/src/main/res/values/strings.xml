@@ -17,5 +17,13 @@
     <string name="create_account">Create Account</string>
     <string name="enter_the_one_time_password_sent_on">Enter the One Time Password sent on</string>
     <string name="verify_otp">Verify OTP</string>
+    <string name="quote">The more you explore the more you find</string>
+    <string name="know_more">know more</string>
+    <string name="rate_us">Rate Us</string>
+    <string name="contact">Contact</string>
+    <string name="about_me">About Me</string>
+    <string name="home">Home</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="about_us">About Us</string>
 
 </resources>
