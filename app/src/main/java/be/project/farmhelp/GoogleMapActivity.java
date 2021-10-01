@@ -1,6 +1,5 @@
 package be.project.farmhelp;
 
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -47,9 +46,7 @@ public class GoogleMapActivity extends AppCompatActivity {
                 query.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        System.out.println("inOndataChanged***********************************************************");
                         if (snapshot.exists()) {
-                            System.out.println("exists*****************************************************************");
                             for (DataSnapshot ds : snapshot.getChildren()) {
                                 LatLng latLng = new LatLng(ds.child("latitude").getValue(Double.class), ds.child("longitude").getValue(Double.class));
                                 MarkerOptions markerOptions = new MarkerOptions().position(latLng).title(ds.child("name").getValue(String.class));
@@ -58,21 +55,15 @@ public class GoogleMapActivity extends AppCompatActivity {
 
                             }
                         } else {
-                            System.out.println("notexists*****************************************************************");
+                            Toast.makeText(GoogleMapActivity.this, "No user exists", Toast.LENGTH_SHORT).show();
                         }
                     }
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-                        System.out.println("cancelled==================================================");
+                        Toast.makeText(GoogleMapActivity.this, "Oops! An error occured.", Toast.LENGTH_SHORT).show();
                     }
                 });
-
-                          /*  LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
-                            MarkerOptions markerOptions = new MarkerOptions().position(latLng).title("Your Location");
-                            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 14));
-                            googleMap.addMarker(markerOptions).showInfoWindow();*/
-
             }
         });
     }

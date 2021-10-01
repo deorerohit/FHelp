@@ -15,7 +15,7 @@ import androidx.core.app.ActivityCompat;
 
 import com.chaos.view.PinView;
 import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -31,6 +31,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.concurrent.TimeUnit;
 
+import be.project.farmhelp.PhoneNumberVerification;
 import be.project.farmhelp.R;
 
 public class OtpPage extends AppCompatActivity {
@@ -42,6 +43,7 @@ public class OtpPage extends AppCompatActivity {
     private double latitude;
     private double longitude;
     private FusedLocationProviderClient client;
+    PhoneNumberVerification phoneNumberVerification;
 
 
     @Override
@@ -57,10 +59,11 @@ public class OtpPage extends AppCompatActivity {
         mobNo = intent.getStringExtra("monNo");
         mobNo = "+91 " + mobNo;
         password = intent.getStringExtra("password");
-
         noToDisplay.setText(mobNo);
-        sendVerificationCodeToUser(mobNo);
+
+        client = LocationServices.getFusedLocationProviderClient(OtpPage.this);
         getCurrentLocation();
+        sendVerificationCodeToUser(mobNo);
     }
 
     private void getCurrentLocation() {
@@ -80,13 +83,22 @@ public class OtpPage extends AppCompatActivity {
         });
     }
 
-    private void sendVerificationCodeToUser(String number) {
 
+    public void verifyOtp(View view) {
+        String code = pinView.getText().toString().trim();
+        if (code.isEmpty()) {
+            Toast.makeText(OtpPage.this, "Enter OTP", Toast.LENGTH_LONG).show();
+        } else {
+            verifyCode(code);
+        }
+    }
+
+    public void sendVerificationCodeToUser(String number) {
         PhoneAuthOptions options =
                 PhoneAuthOptions.newBuilder(FirebaseAuth.getInstance())
                         .setPhoneNumber(number)       // Phone number to verify
                         .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
-                        .setActivity(this)                 // Activity (for callback binding)
+                        .setActivity(OtpPage.this)                 // Activity (for callback binding)
                         .setCallbacks(mCallbacks)          // OnVerificationStateChangedCallbacks
                         .build();
         PhoneAuthProvider.verifyPhoneNumber(options);
@@ -99,7 +111,6 @@ public class OtpPage extends AppCompatActivity {
                 @Override
                 public void onCodeSent(@NonNull String s, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
                     super.onCodeSent(s, forceResendingToken);
-
                     codeInFirebase = s;
                 }
 
@@ -107,7 +118,6 @@ public class OtpPage extends AppCompatActivity {
                 public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
                     String code = phoneAuthCredential.getSmsCode();
                     if (code != null) {
-                        pinView.setText(code);
                         verifyCode(code);
                     }
                 }
@@ -119,32 +129,22 @@ public class OtpPage extends AppCompatActivity {
             };
 
 
-    public void verifyOtp(View view) {
-        String code = pinView.getText().toString().trim();
-        if (code.isEmpty()) {
-            Toast.makeText(OtpPage.this, "Enter OTP", Toast.LENGTH_LONG).show();
-        } else {
-            verifyCode(code);
-        }
-    }
-
-    private void verifyCode(String code) {
+    public void verifyCode(String code) {
         try {
             PhoneAuthCredential crediantials = PhoneAuthProvider.getCredential(codeInFirebase, code);
             signInWithPhoneAuthCrediantials(crediantials);
         } catch (Exception e) {
-            Toast toast = Toast.makeText(this, "Verification Code is wrong", Toast.LENGTH_SHORT);
+            System.out.println(e + "********************************************************************");
+            Toast toast = Toast.makeText(OtpPage.this, "Verification Code is wrong", Toast.LENGTH_SHORT);
             toast.show();
         }
     }
 
     private void signInWithPhoneAuthCrediantials(PhoneAuthCredential crediantials) {
-
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
         firebaseAuth.signInWithCredential(crediantials).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-
                 if (task.isSuccessful()) {
                     Toast.makeText(OtpPage.this, "Verification Completed", Toast.LENGTH_SHORT).show();
                     writeDataToFirebase();
@@ -156,6 +156,7 @@ public class OtpPage extends AppCompatActivity {
             }
         });
     }
+
 
     private void writeDataToFirebase() {
         WriteThisClassToFirebase userDataClass = new WriteThisClassToFirebase(name, mobNo, password, latitude, longitude);

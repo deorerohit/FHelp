@@ -18,8 +18,6 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
-import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.LocationServices;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -27,7 +25,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
-import be.project.farmhelp.ActivityAfterLogIn;
+import be.project.farmhelp.UserDashboard;
 import be.project.farmhelp.R;
 
 public class SignIn extends AppCompatActivity {
@@ -54,7 +52,7 @@ public class SignIn extends AppCompatActivity {
 
         currentUser = new SessionManager(SignIn.this);
         if (currentUser.isLoggedIn()) {
-            startActivity(new Intent(SignIn.this, ActivityAfterLogIn.class));
+            startActivity(new Intent(SignIn.this, UserDashboard.class));
             finish();
         }
         if (!isNktConnected()) {
@@ -107,7 +105,7 @@ public class SignIn extends AppCompatActivity {
 
                         currentUser.createLoginSession(_name, _number, _password);
 
-                        startActivity(new Intent(SignIn.this, ActivityAfterLogIn.class));
+                        startActivity(new Intent(SignIn.this, UserDashboard.class));
                         finish();
                     } else {
                         Toast.makeText(SignIn.this, "Incorrect Password", Toast.LENGTH_SHORT).show();

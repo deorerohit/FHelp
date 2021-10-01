@@ -29,18 +29,20 @@
             android:hapticFeedbackEnabled="true"
             android:src="@drawable/three_lines" />
 
-        <com.google.android.material.button.MaterialButton
+        <fragment
+            android:id="@+id/small_map"
+            class="com.google.android.gms.maps.SupportMapFragment"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="35dp"
-            android:fontFamily="sans-serif-black"
-            android:onClick="viewMap"
-            android:padding="10dp"
-            android:text="Map"
-            android:textAllCaps="false"
-            android:textSize="20sp"
-            app:cornerRadius="28sp"
-            android:layout_alignParentBottom="true"/>
+            android:layout_height="200dp"
+            android:layout_below="@id/menu_button"
+            android:layout_margin="15dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_below="@id/menu_button"
+            android:layout_margin="15dp"
+            android:onClick="callMapActivity" />
 
     </RelativeLayout>
 
