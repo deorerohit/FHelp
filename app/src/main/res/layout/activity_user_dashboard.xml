@@ -57,7 +57,16 @@
                         android:layout_height="match_parent"
                         android:padding="5dp">
 
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_above="@id/textview_getservice"
+                            android:layout_alignParentTop="true"
+                            android:layout_centerInParent="true"
+                            android:src="@drawable/ic_get_service_48" />
+
                         <TextView
+                            android:id="@+id/textview_getservice"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_alignParentBottom="true"
@@ -79,8 +88,16 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:padding="5dp">
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_above="@id/textview_provideservice"
+                            android:layout_alignParentTop="true"
+                            android:layout_centerInParent="true"
+                            android:src="@drawable/ic_provide_service_48" />
 
                         <TextView
+                            android:id="@+id/textview_provideservice"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_alignParentBottom="true"
@@ -102,7 +119,16 @@
                         android:layout_height="match_parent"
                         android:padding="5dp">
 
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_above="@id/textview_youroffers"
+                            android:layout_alignParentTop="true"
+                            android:layout_centerInParent="true"
+                            android:src="@drawable/ic_your_offers_48" />
+
                         <TextView
+                            android:id="@+id/textview_youroffers"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_alignParentBottom="true"
@@ -132,8 +158,16 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:padding="5dp">
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_above="@id/textview_rentequipment"
+                            android:layout_alignParentTop="true"
+                            android:layout_centerInParent="true"
+                            android:src="@drawable/ic_rent_equipment_48" />
 
                         <TextView
+                            android:id="@+id/textview_rentequipment"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_alignParentBottom="true"
@@ -155,8 +189,16 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:padding="5dp">
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_above="@id/textview_sellgoods"
+                            android:layout_alignParentTop="true"
+                            android:layout_centerInParent="true"
+                            android:src="@drawable/ic_sell_goods_48" />
 
                         <TextView
+                            android:id="@+id/textview_sellgoods"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_alignParentBottom="true"
@@ -177,8 +219,16 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:padding="5dp">
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_above="@id/textview_buygoods"
+                            android:layout_alignParentTop="true"
+                            android:layout_centerInParent="true"
+                            android:src="@drawable/ic_buy_goods_48" />
 
                         <TextView
+                            android:id="@+id/textview_buygoods"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_alignParentBottom="true"
