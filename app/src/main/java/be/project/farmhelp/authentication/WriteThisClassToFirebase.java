@@ -4,13 +4,24 @@ public class WriteThisClassToFirebase {
 
     private String name, mobNo, password;
     private double latitude, longitude;
+    private boolean isServiceProvider;
 
-    public WriteThisClassToFirebase(String name, String mobNo, String password, double latitude, double longitude) {
+    public WriteThisClassToFirebase(String name, String mobNo, String password, double latitude, double longitude, boolean isServiceProvider) {
         this.name = name;
         this.mobNo = mobNo;
         this.password = password;
         this.latitude = latitude;
         this.longitude = longitude;
+        this.isServiceProvider=isServiceProvider;
+    }
+
+
+    public boolean isServiceProvider() {
+        return isServiceProvider;
+    }
+
+    public void setServiceProvider(boolean serviceProvider) {
+        isServiceProvider = serviceProvider;
     }
 
     public String getName() {

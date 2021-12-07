@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".provideservice.YouAreNotProvidingService">
+
+    <ImageView
+        android:id="@+id/notproviding"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/not_providing_service_60"
+        android:layout_centerInParent="true"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/notproviding"
+        android:text="Oops! Curently you are not providing any service"
+        android:textAlignment="center"/>
+
+
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="35dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:fontFamily="sans-serif-black"
+        android:onClick="addService"
+        android:padding="10dp"
+        android:text="Add Service"
+        android:textAllCaps="false"
+        android:textSize="20sp"
+        app:cornerRadius="28sp" />
+
+</RelativeLayout>

@@ -159,7 +159,7 @@ public class OtpPage extends AppCompatActivity {
 
 
     private void writeDataToFirebase() {
-        WriteThisClassToFirebase userDataClass = new WriteThisClassToFirebase(name, mobNo, password, latitude, longitude);
+        WriteThisClassToFirebase userDataClass = new WriteThisClassToFirebase(name, mobNo, password, latitude, longitude, false);
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference reference = database.getReference("Users");
         reference.child(mobNo).setValue(userDataClass);

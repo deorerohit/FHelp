@@ -48,6 +48,10 @@ public class SessionManager {
             return false;
     }
 
+    public String getKeyMobile(){
+        return userSession.getString(KEY_MOBILE, null);
+    }
+
     public void logOutUserFromSession() {
         editor.clear();
         editor.commit();
