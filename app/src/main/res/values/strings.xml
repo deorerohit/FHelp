@@ -26,4 +26,16 @@
     <string name="sign_out">Sign Out</string>
     <string name="about_us">About Us</string>
 
+    <string name="serice_prompt">Choose a service</string>
+    <string-array name="services_arrays">
+        <item>Electrician</item>
+        <item>Mechanic</item>
+        <item>Plumber</item>
+        <item>France</item>
+        <item>Italy</item>
+        <item>Singapore</item>
+        <item>New Zealand</item>
+        <item>India</item>
+    </string-array>
+
 </resources>

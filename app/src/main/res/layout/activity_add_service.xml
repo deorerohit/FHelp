@@ -1,15 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="25dp"
     tools:context=".provideservice.AddService">
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Hello"
-        android:layout_centerInParent="true"/>
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="Provide the details to continue."
+        android:textColor="@color/purple_200"
+        android:textSize="25sp" />
 
-</RelativeLayout>
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:strokeWidth="5"
+        android:strokeColor="@color/purple_200">
+
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/add_serivce_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/services_arrays"
+            android:padding="15dp"
+            android:prompt="@string/serice_prompt" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/add_serivce_rate"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Rates (in ₹)"
+            android:inputType="number"
+            android:textColor="@color/purple_500"
+            android:textSize="18sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/add_serivce_contact"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="@string/contact"
+            android:inputType="phone"
+            android:textColor="@color/purple_500"
+            android:textSize="18sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/add_serivce_desc"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="top"
+            android:hint="Description"
+            android:lines="5"
+            android:textColor="@color/purple_500"
+            android:textSize="18sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:fontFamily="sans-serif-black"
+        android:padding="10dp"
+        android:text="Add Service"
+        android:textAllCaps="false"
+        android:textSize="22sp"
+        app:cornerRadius="28sp" />
+
+</LinearLayout>

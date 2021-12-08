@@ -132,7 +132,6 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
     public void callAddServiceActivity(View view) {
         HashMap<String, String> userDetails = currentUser.getUsersDetailsFromSession();
         String mobNumber = userDetails.get(SessionManager.KEY_MOBILE);
-        System.out.println("******************************************************************-----"+mobNumber+"********************************************");
 
         final Query checkUser = FirebaseDatabase.getInstance().getReference("Users").orderByChild("mobNo").equalTo(mobNumber);
 
@@ -141,8 +140,7 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
                     Boolean isServiceProvider = snapshot.child(mobNumber).child("serviceProvider").getValue(Boolean.class);
-
-                    if (isServiceProvider){
+                    if (isServiceProvider) {
                         startActivity(new Intent(UserDashboard.this, AddService.class));
                     } else {
                         startActivity(new Intent(UserDashboard.this, YouAreNotProvidingService.class));
@@ -151,6 +149,7 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
                     Toast.makeText(UserDashboard.this, "No user exists", Toast.LENGTH_SHORT).show();
                 }
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 Toast.makeText(UserDashboard.this, "Sorry!! Try again", Toast.LENGTH_SHORT).show();

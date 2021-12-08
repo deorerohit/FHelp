@@ -21,5 +21,6 @@ public class YouAreNotProvidingService extends AppCompatActivity {
 
     public void addService(View view){
         startActivity(new Intent(YouAreNotProvidingService.this, AddService.class));
+        finish();
     }
 }
