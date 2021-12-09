@@ -33,6 +33,7 @@ import java.util.concurrent.TimeUnit;
 
 import be.project.farmhelp.PhoneNumberVerification;
 import be.project.farmhelp.R;
+import be.project.farmhelp.dataholders.WriteThisClassToFirebase;
 
 public class OtpPage extends AppCompatActivity {
 
@@ -159,7 +160,7 @@ public class OtpPage extends AppCompatActivity {
 
 
     private void writeDataToFirebase() {
-        WriteThisClassToFirebase userDataClass = new WriteThisClassToFirebase(name, mobNo, password, latitude, longitude, false);
+        WriteThisClassToFirebase userDataClass = new WriteThisClassToFirebase(name, mobNo, password, latitude, longitude);
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference reference = database.getReference("Users");
         reference.child(mobNo).setValue(userDataClass);

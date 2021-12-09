@@ -1,14 +1,12 @@
 package be.project.farmhelp.provideservice;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import be.project.farmhelp.R;
-import be.project.farmhelp.authentication.SignIn;
-import be.project.farmhelp.authentication.SignUp;
 
 public class YouAreNotProvidingService extends AppCompatActivity {
 
@@ -19,7 +17,7 @@ public class YouAreNotProvidingService extends AppCompatActivity {
     }
 
 
-    public void addService(View view){
+    public void openAddService(View view) {
         startActivity(new Intent(YouAreNotProvidingService.this, AddService.class));
         finish();
     }

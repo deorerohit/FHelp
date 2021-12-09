@@ -1,20 +1,30 @@
-package be.project.farmhelp.authentication;
+package be.project.farmhelp.dataholders;
 
 public class WriteThisClassToFirebase {
 
     private String name, mobNo, password;
     private double latitude, longitude;
     private boolean isServiceProvider;
+    private AddServiceClassToFirebase addServiceClassToFirebase;
 
-    public WriteThisClassToFirebase(String name, String mobNo, String password, double latitude, double longitude, boolean isServiceProvider) {
+    public WriteThisClassToFirebase(String name, String mobNo, String password, double latitude, double longitude) {
         this.name = name;
         this.mobNo = mobNo;
         this.password = password;
         this.latitude = latitude;
         this.longitude = longitude;
-        this.isServiceProvider=isServiceProvider;
+        this.isServiceProvider = false;
+
+        addServiceClassToFirebase = new AddServiceClassToFirebase("", "", "", 0);
     }
 
+    public AddServiceClassToFirebase getAddServiceClassToFirebase() {
+        return addServiceClassToFirebase;
+    }
+
+    public void setAddServiceClassToFirebase(AddServiceClassToFirebase addServiceClassToFirebase) {
+        this.addServiceClassToFirebase = addServiceClassToFirebase;
+    }
 
     public boolean isServiceProvider() {
         return isServiceProvider;

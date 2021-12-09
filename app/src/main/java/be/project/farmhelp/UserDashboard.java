@@ -48,6 +48,7 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
     ImageView menuButton;
     private SupportMapFragment mapFragment;
     private FusedLocationProviderClient client;
+    public static final String NUMBER_INTENT_KEY = "numberIntentKey";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -143,7 +144,8 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
                     if (isServiceProvider) {
                         startActivity(new Intent(UserDashboard.this, AddService.class));
                     } else {
-                        startActivity(new Intent(UserDashboard.this, YouAreNotProvidingService.class));
+                        Intent intent = new Intent(UserDashboard.this, YouAreNotProvidingService.class);
+                        startActivity(intent);
                     }
                 } else {
                     Toast.makeText(UserDashboard.this, "No user exists", Toast.LENGTH_SHORT).show();

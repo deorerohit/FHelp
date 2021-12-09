@@ -14,7 +14,7 @@
         android:layout_marginTop="25dp"
         android:text="Provide the details to continue."
         android:textColor="@color/purple_200"
-        android:textSize="25sp" />
+        android:textSize="25sp"/>
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
@@ -87,6 +87,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="35dp"
+        android:onClick="addService"
         android:fontFamily="sans-serif-black"
         android:padding="10dp"
         android:text="Add Service"
