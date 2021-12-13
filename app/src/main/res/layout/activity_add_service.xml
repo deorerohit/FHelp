@@ -14,7 +14,7 @@
         android:layout_marginTop="25dp"
         android:text="Provide the details to continue."
         android:textColor="@color/purple_200"
-        android:textSize="25sp"/>
+        android:textSize="25sp" />
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
@@ -84,15 +84,32 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="35dp"
-        android:onClick="addService"
         android:fontFamily="sans-serif-black"
+        android:onClick="removeService"
         android:padding="10dp"
-        android:text="Add Service"
+        android:text="Remove Service"
+        android:textAllCaps="false"
+        android:textColor="#F44336"
+        android:textSize="22sp"
+        app:cornerRadius="28sp"
+        app:strokeColor="#F44336"
+        app:strokeWidth="3dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="sans-serif-black"
+        android:onClick="addService"
+        android:padding="10dp"
+        android:text="Add/Update Service"
         android:textAllCaps="false"
         android:textSize="22sp"
         app:cornerRadius="28sp" />
+
 
 </LinearLayout>

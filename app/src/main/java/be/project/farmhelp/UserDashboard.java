@@ -142,10 +142,14 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
                 if (snapshot.exists()) {
                     Boolean isServiceProvider = snapshot.child(mobNumber).child("serviceProvider").getValue(Boolean.class);
                     if (isServiceProvider) {
-                        startActivity(new Intent(UserDashboard.this, AddService.class));
+                        Intent intent = new Intent(UserDashboard.this, AddService.class);
+                        intent.putExtra("IS_SERVICE_PROVIDER", true);
+                        startActivity(intent);
+
                     } else {
                         Intent intent = new Intent(UserDashboard.this, YouAreNotProvidingService.class);
                         startActivity(intent);
+
                     }
                 } else {
                     Toast.makeText(UserDashboard.this, "No user exists", Toast.LENGTH_SHORT).show();

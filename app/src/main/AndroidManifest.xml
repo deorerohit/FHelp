@@ -20,16 +20,29 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FarmHelp">
+
         <activity
             android:name=".provideservice.YouAreNotProvidingService"
-            android:exported="false" />
+            android:exported="false"
+            android:launchMode="singleTask">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".UserDashboard" />
+        </activity>
+
         <activity
             android:name=".provideservice.AddService"
-            android:exported="false" />
+            android:exported="false"
+            android:launchMode="singleTask">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".UserDashboard" />
+        </activity>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="${KEY}" />
+
 
         <activity android:name=".GoogleMapActivity" />
         <activity android:name=".UserDashboard" />
