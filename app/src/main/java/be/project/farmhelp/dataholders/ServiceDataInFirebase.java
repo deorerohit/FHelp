@@ -1,11 +1,11 @@
 package be.project.farmhelp.dataholders;
 
-public class AddServiceClassToFirebase {
+public class ServiceDataInFirebase {
 
-    private String service, description, contact;
-    private int rate;
+    private String service, description, contact, rate;
 
-    public AddServiceClassToFirebase(String service, String description, String contact, int rate) {
+
+    public ServiceDataInFirebase(String service, String description, String contact, String rate) {
         this.service = service;
         this.description = description;
         this.contact = contact;
@@ -36,11 +36,11 @@ public class AddServiceClassToFirebase {
         this.contact = contact;
     }
 
-    public int getRate() {
+    public String getRate() {
         return rate;
     }
 
-    public void setRate(int rate) {
+    public void setRate(String rate) {
         this.rate = rate;
     }
 }

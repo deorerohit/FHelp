@@ -5,7 +5,7 @@ public class WriteThisClassToFirebase {
     private String name, mobNo, password;
     private double latitude, longitude;
     private boolean isServiceProvider;
-    private AddServiceClassToFirebase addServiceClassToFirebase;
+    private ServiceDataInFirebase serviceDataInFirebase;
 
     public WriteThisClassToFirebase(String name, String mobNo, String password, double latitude, double longitude) {
         this.name = name;
@@ -15,15 +15,15 @@ public class WriteThisClassToFirebase {
         this.longitude = longitude;
         this.isServiceProvider = false;
 
-        addServiceClassToFirebase = new AddServiceClassToFirebase("", "", "", 0);
+        serviceDataInFirebase = new ServiceDataInFirebase("", "", "", "");
     }
 
-    public AddServiceClassToFirebase getAddServiceClassToFirebase() {
-        return addServiceClassToFirebase;
+    public ServiceDataInFirebase getAddServiceClassToFirebase() {
+        return serviceDataInFirebase;
     }
 
-    public void setAddServiceClassToFirebase(AddServiceClassToFirebase addServiceClassToFirebase) {
-        this.addServiceClassToFirebase = addServiceClassToFirebase;
+    public void setAddServiceClassToFirebase(ServiceDataInFirebase serviceDataInFirebase) {
+        this.serviceDataInFirebase = serviceDataInFirebase;
     }
 
     public boolean isServiceProvider() {
