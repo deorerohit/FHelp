@@ -29,6 +29,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
@@ -48,6 +49,7 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
     ImageView menuButton;
     private SupportMapFragment mapFragment;
     private FusedLocationProviderClient client;
+    String mobNumber;
     public static final String NUMBER_INTENT_KEY = "numberIntentKey";
 
     @Override
@@ -61,6 +63,10 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
         menuButton = findViewById(R.id.menu_button);
         mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.small_map);
         client = LocationServices.getFusedLocationProviderClient(UserDashboard.this);
+
+        currentUser = new SessionManager(getApplicationContext());
+        HashMap<String, String> userDetails = currentUser.getUsersDetailsFromSession();
+        mobNumber = userDetails.get(SessionManager.KEY_MOBILE);
 
 
         loadLocationOnMap();
@@ -89,6 +95,39 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
             }
         });
     }
+
+    public void updateLocation(View view) {
+
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            return;
+        }
+        Task<Location> task = client.getLastLocation();
+        task.addOnSuccessListener(new OnSuccessListener<Location>() {
+            @Override
+            public void onSuccess(Location location) {
+                if(location!=null){
+                    DatabaseReference checkUser = FirebaseDatabase.getInstance().getReference("Users");
+                    checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            snapshot.getRef().child(mobNumber).child("latitude").setValue(location.getLatitude());
+                            snapshot.getRef().child(mobNumber).child("longitude").setValue(location.getLongitude());
+                            Toast.makeText(UserDashboard.this, "Location Updated", Toast.LENGTH_SHORT).show();
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                            Toast.makeText(UserDashboard.this, "Sorry!! Try again", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+                else {
+                    Toast.makeText(UserDashboard.this, "Sorry!! unable to update", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+
 
     private void navigationDrawer() {
         navigationView.bringToFront();
