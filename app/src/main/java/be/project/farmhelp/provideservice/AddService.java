@@ -49,12 +49,13 @@ public class AddService extends AppCompatActivity {
         addServiceContact = findViewById(R.id.add_serivce_contact);
         addServiceDescription = findViewById(R.id.add_serivce_desc);
 
+        addServiceContact.setText(mobNumber.split("\\s+")[1].trim());
+
         boolean isServiceProvider = getIntent().getBooleanExtra("IS_SERVICE_PROVIDER", false);
 
         if (isServiceProvider) {
             String[] services = getApplicationContext().getResources().getStringArray(R.array.services_arrays);
             fillDataInViews(services);
-
         }
 
     }
@@ -117,7 +118,7 @@ public class AddService extends AppCompatActivity {
 
     }
 
-    public void addService(View view) {
+    public void addUpdateService(View view) {
 
         DatabaseReference checkUser = FirebaseDatabase.getInstance().getReference("Users");
 
