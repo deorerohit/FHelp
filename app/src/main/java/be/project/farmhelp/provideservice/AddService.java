@@ -48,8 +48,7 @@ public class AddService extends AppCompatActivity {
         addServiceRate = findViewById(R.id.add_serivce_rate);
         addServiceContact = findViewById(R.id.add_serivce_contact);
         addServiceDescription = findViewById(R.id.add_serivce_desc);
-
-        addServiceContact.setText(mobNumber.split("\\s+")[1].trim());
+        addServiceContact.setText(mobNumber);
 
         boolean isServiceProvider = getIntent().getBooleanExtra("IS_SERVICE_PROVIDER", false);
 
@@ -57,7 +56,6 @@ public class AddService extends AppCompatActivity {
             String[] services = getApplicationContext().getResources().getStringArray(R.array.services_arrays);
             fillDataInViews(services);
         }
-
     }
 
     private void fillDataInViews(String[] allServices) {
