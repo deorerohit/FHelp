@@ -40,6 +40,7 @@ import be.project.farmhelp.authentication.SessionManager;
 import be.project.farmhelp.authentication.SignIn;
 import be.project.farmhelp.provideservice.AddService;
 import be.project.farmhelp.provideservice.YouAreNotProvidingService;
+import be.project.farmhelp.youroffers.DisplayReceivedRequest;
 
 public class UserDashboard extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -200,6 +201,10 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
                 Toast.makeText(UserDashboard.this, "Sorry!! Try again", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    public void displayYourOffers(View view){
+        startActivity(new Intent(UserDashboard.this, DisplayReceivedRequest.class));
     }
 
 }

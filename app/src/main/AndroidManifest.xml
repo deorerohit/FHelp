@@ -21,6 +21,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FarmHelp">
         <activity
+            android:name=".youroffers.DisplayReceivedRequest"
+            android:exported="false" />
+        <activity
             android:name=".getservice.DisplayServiceDetails"
             android:exported="false" />
         <activity
