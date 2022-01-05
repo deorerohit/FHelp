@@ -12,12 +12,13 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:src="@drawable/not_providing_service_60" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/notproviding"
         android:text="Oops! Curently you are not providing any service"
-        android:textAlignment="center"/>
+        android:textAlignment="center" />
 
 
     <com.google.android.material.button.MaterialButton

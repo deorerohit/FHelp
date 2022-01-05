@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -51,6 +52,7 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
     private SupportMapFragment mapFragment;
     private FusedLocationProviderClient client;
     String mobNumber;
+    TextView mainMenuTextView, mainMenuNumber;
     public static final String NUMBER_INTENT_KEY = "numberIntentKey";
 
     @Override
@@ -69,6 +71,11 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
         HashMap<String, String> userDetails = currentUser.getUsersDetailsFromSession();
         mobNumber = userDetails.get(SessionManager.KEY_MOBILE);
 
+        View headerView = navigationView.getHeaderView(0);
+        mainMenuTextView = headerView.findViewById(R.id.menutitle);
+        mainMenuTextView.setText(userDetails.get(SessionManager.KEY_NAME));
+        mainMenuNumber = headerView.findViewById(R.id.menuslogan);
+        mainMenuNumber.setText(userDetails.get(SessionManager.KEY_MOBILE));
 
         loadLocationOnMap();
         navigationDrawer();
@@ -106,7 +113,7 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
         task.addOnSuccessListener(new OnSuccessListener<Location>() {
             @Override
             public void onSuccess(Location location) {
-                if(location!=null){
+                if (location != null) {
                     DatabaseReference checkUser = FirebaseDatabase.getInstance().getReference("Users");
                     checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
@@ -121,8 +128,7 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
                             Toast.makeText(UserDashboard.this, "Sorry!! Try again", Toast.LENGTH_SHORT).show();
                         }
                     });
-                }
-                else {
+                } else {
                     Toast.makeText(UserDashboard.this, "Sorry!! unable to update", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -203,7 +209,7 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
         });
     }
 
-    public void displayYourOffers(View view){
+    public void displayYourOffers(View view) {
         startActivity(new Intent(UserDashboard.this, DisplayReceivedRequest.class));
     }
 

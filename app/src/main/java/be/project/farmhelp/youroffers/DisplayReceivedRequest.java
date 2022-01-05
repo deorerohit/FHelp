@@ -1,6 +1,9 @@
 package be.project.farmhelp.youroffers;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,6 +30,7 @@ public class DisplayReceivedRequest extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private RecyclerAdapter recyclerAdapter;
+    LinearLayout linearLayoutNoRequest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +40,8 @@ public class DisplayReceivedRequest extends AppCompatActivity {
         currentUser = new SessionManager(getApplicationContext());
         HashMap<String, String> userDetails = currentUser.getUsersDetailsFromSession();
         mobNumber = userDetails.get(SessionManager.KEY_MOBILE);
+
+        linearLayoutNoRequest = findViewById(R.id.no_request_layout);
 
         recyclerView = findViewById(R.id.recyclerView_layout);
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
@@ -55,6 +61,12 @@ public class DisplayReceivedRequest extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
+                if (snapshot.getChildrenCount() == 0) {
+                    linearLayoutNoRequest.setVisibility(View.VISIBLE);
+                } else {
+                    linearLayoutNoRequest.setVisibility(View.INVISIBLE);
+                }
+
                 for (DataSnapshot postSnapShot : snapshot.getChildren()) {
                     ServiceRequests post = postSnapShot.getValue(ServiceRequests.class);
                     serviceRequestsList.add(post);
@@ -64,7 +76,7 @@ public class DisplayReceivedRequest extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                Toast.makeText(DisplayReceivedRequest.this, "Sorry!! Try again", Toast.LENGTH_SHORT).show();
             }
         });
     }

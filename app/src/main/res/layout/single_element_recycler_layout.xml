@@ -38,7 +38,7 @@
             android:layout_below="@id/recycler_name"
             android:layout_marginTop="8dp"
             android:text="Nashik"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
 
 
     </RelativeLayout>
