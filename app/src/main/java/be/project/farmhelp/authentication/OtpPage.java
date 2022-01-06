@@ -31,7 +31,6 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.concurrent.TimeUnit;
 
-import be.project.farmhelp.PhoneNumberVerification;
 import be.project.farmhelp.R;
 import be.project.farmhelp.dataholders.WriteThisClassToFirebase;
 
@@ -44,7 +43,6 @@ public class OtpPage extends AppCompatActivity {
     private double latitude;
     private double longitude;
     private FusedLocationProviderClient client;
-    PhoneNumberVerification phoneNumberVerification;
 
 
     @Override
@@ -135,7 +133,6 @@ public class OtpPage extends AppCompatActivity {
             PhoneAuthCredential crediantials = PhoneAuthProvider.getCredential(codeInFirebase, code);
             signInWithPhoneAuthCrediantials(crediantials);
         } catch (Exception e) {
-            System.out.println(e + "********************************************************************");
             Toast toast = Toast.makeText(OtpPage.this, "Verification Code is wrong", Toast.LENGTH_SHORT);
             toast.show();
         }

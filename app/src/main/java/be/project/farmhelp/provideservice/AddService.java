@@ -88,61 +88,31 @@ public class AddService extends AppCompatActivity {
     }
 
     public void removeService(View view) {
-        DatabaseReference checkUser = FirebaseDatabase.getInstance().getReference("Users");
-        checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()) {
-                    snapshot.getRef().child(mobNumber).child("serviceProvider").setValue(false);
+        DatabaseReference dbReference = FirebaseDatabase.getInstance().getReference("Users");
 
-                    snapshot.getRef().child(mobNumber).child("addServiceClassToFirebase/contact").setValue("");
-                    snapshot.getRef().child(mobNumber).child("addServiceClassToFirebase/description").setValue("");
-                    snapshot.getRef().child(mobNumber).child("addServiceClassToFirebase/rate").setValue("");
-                    snapshot.getRef().child(mobNumber).child("addServiceClassToFirebase/service").setValue("");
+        dbReference.child(mobNumber).child("serviceProvider").setValue(false);
 
-                    NavUtils.navigateUpFromSameTask(AddService.this);
+        dbReference.child(mobNumber).child("addServiceClassToFirebase/contact").setValue("");
+        dbReference.child(mobNumber).child("addServiceClassToFirebase/description").setValue("");
+        dbReference.child(mobNumber).child("addServiceClassToFirebase/rate").setValue("");
+        dbReference.child(mobNumber).child("addServiceClassToFirebase/service").setValue("");
 
-                    Toast.makeText(AddService.this, "Service removed", Toast.LENGTH_LONG).show();
-                } else {
-                    Toast.makeText(AddService.this, "No user exists", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(AddService.this, "Sorry!! Try again", Toast.LENGTH_SHORT).show();
-            }
-        });
-
+        NavUtils.navigateUpFromSameTask(AddService.this);
+        Toast.makeText(AddService.this, "Service removed", Toast.LENGTH_LONG).show();
     }
 
     public void addUpdateService(View view) {
+        DatabaseReference dbReference = FirebaseDatabase.getInstance().getReference("Users");
 
-        DatabaseReference checkUser = FirebaseDatabase.getInstance().getReference("Users");
+        dbReference.child(mobNumber).child("serviceProvider").setValue(true);
 
-        checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()) {
-                    snapshot.getRef().child(mobNumber).child("serviceProvider").setValue(true);
+        dbReference.child(mobNumber).child("addServiceClassToFirebase/contact").setValue(addServiceContact.getText().toString());
+        dbReference.child(mobNumber).child("addServiceClassToFirebase/description").setValue(addServiceDescription.getText().toString());
+        dbReference.child(mobNumber).child("addServiceClassToFirebase/rate").setValue(addServiceRate.getText().toString());
+        dbReference.child(mobNumber).child("addServiceClassToFirebase/service").setValue(appCompatSpinner.getSelectedItem().toString());
 
-                    snapshot.getRef().child(mobNumber).child("addServiceClassToFirebase/contact").setValue(addServiceContact.getText().toString());
-                    snapshot.getRef().child(mobNumber).child("addServiceClassToFirebase/description").setValue(addServiceDescription.getText().toString());
-                    snapshot.getRef().child(mobNumber).child("addServiceClassToFirebase/rate").setValue(addServiceRate.getText().toString());
-                    snapshot.getRef().child(mobNumber).child("addServiceClassToFirebase/service").setValue(appCompatSpinner.getSelectedItem().toString());
+        NavUtils.navigateUpFromSameTask(AddService.this);
+        Toast.makeText(AddService.this, "This service is added to your profile", Toast.LENGTH_LONG).show();
 
-                    NavUtils.navigateUpFromSameTask(AddService.this);
-
-                    Toast.makeText(AddService.this, "This service is added to your profile", Toast.LENGTH_LONG).show();
-                } else {
-                    Toast.makeText(AddService.this, "No user exists", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(AddService.this, "Sorry!! Try again", Toast.LENGTH_SHORT).show();
-            }
-        });
     }
 }

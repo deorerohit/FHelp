@@ -60,7 +60,6 @@ public class DisplayReceivedRequest extends AppCompatActivity {
         checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-
                 if (snapshot.getChildrenCount() == 0) {
                     linearLayoutNoRequest.setVisibility(View.VISIBLE);
                 } else {

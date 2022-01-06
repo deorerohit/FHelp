@@ -60,7 +60,7 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_dashboard);
 
-        currentUser = new SessionManager(getApplicationContext());
+
         navigationView = findViewById(R.id.navigation_view);
         drawerLayout = findViewById(R.id.drawer_layout);
         menuButton = findViewById(R.id.menu_button);
@@ -105,7 +105,6 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
     }
 
     public void updateLocation(View view) {
-
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             return;
         }
@@ -114,20 +113,11 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
             @Override
             public void onSuccess(Location location) {
                 if (location != null) {
-                    DatabaseReference checkUser = FirebaseDatabase.getInstance().getReference("Users");
-                    checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            snapshot.getRef().child(mobNumber).child("latitude").setValue(location.getLatitude());
-                            snapshot.getRef().child(mobNumber).child("longitude").setValue(location.getLongitude());
-                            Toast.makeText(UserDashboard.this, "Location Updated", Toast.LENGTH_SHORT).show();
-                        }
+                    DatabaseReference dbReference = FirebaseDatabase.getInstance().getReference("Users");
 
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-                            Toast.makeText(UserDashboard.this, "Sorry!! Try again", Toast.LENGTH_SHORT).show();
-                        }
-                    });
+                    dbReference.child(mobNumber).child("latitude").setValue(location.getLatitude());
+                    dbReference.child(mobNumber).child("longitude").setValue(location.getLongitude());
+                    Toast.makeText(UserDashboard.this, "Location Updated", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(UserDashboard.this, "Sorry!! unable to update", Toast.LENGTH_SHORT).show();
                 }
@@ -193,9 +183,7 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
                         startActivity(intent);
 
                     } else {
-                        Intent intent = new Intent(UserDashboard.this, YouAreNotProvidingService.class);
-                        startActivity(intent);
-
+                        startActivity(new Intent(UserDashboard.this, YouAreNotProvidingService.class));
                     }
                 } else {
                     Toast.makeText(UserDashboard.this, "No user exists", Toast.LENGTH_SHORT).show();

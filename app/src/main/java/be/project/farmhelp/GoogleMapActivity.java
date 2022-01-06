@@ -77,9 +77,9 @@ public class GoogleMapActivity extends AppCompatActivity {
                                     LatLng latLng = new LatLng(ds.child("latitude").getValue(Double.class), ds.child("longitude").getValue(Double.class));
                                     MarkerOptions markerOptions = new MarkerOptions().position(latLng).title(ds.child("name").getValue(String.class));
                                     googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 14));
+
                                     //googleMap.addMarker(markerOptions).showInfoWindow();
                                     Marker marker = googleMap.addMarker(markerOptions);
-
                                     firebaseDataMap.put(marker, dataFromFirebase);
                                 }
                             }

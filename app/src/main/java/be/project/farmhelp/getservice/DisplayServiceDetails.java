@@ -33,14 +33,15 @@ public class DisplayServiceDetails extends AppCompatActivity {
 
     SessionManager currentUser;
 
-    String currentUserMob;
     String receiversMobNum;
+    ServiceRequests serviceRequests;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_service_details);
 
+        serviceRequests = getCurrentUserDetails();
 
         textViewName = findViewById(R.id.disp_ser_det_name);
         editTextService = findViewById(R.id.disp_ser_det_service);
@@ -84,24 +85,8 @@ public class DisplayServiceDetails extends AppCompatActivity {
     }
 
     public void sendRequestToServiceProv(View view) {
-        ServiceRequests serviceRequests = getCurrentUserDetails();
-        DatabaseReference checkUser = FirebaseDatabase.getInstance().getReference("Users");
-
-        checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()) {
-                    snapshot.getRef().child(receiversMobNum).child("requests/" + serviceRequests.getNumber()).setValue(serviceRequests);
-                    Toast.makeText(DisplayServiceDetails.this, "Request Send Successfully!", Toast.LENGTH_LONG).show();
-                } else {
-                    Toast.makeText(DisplayServiceDetails.this, "No user exists", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(DisplayServiceDetails.this, "Sorry!! Try again", Toast.LENGTH_SHORT).show();
-            }
-        });
+        DatabaseReference dbReference = FirebaseDatabase.getInstance().getReference("Users");
+        dbReference.child(receiversMobNum).child("requests/" + serviceRequests.getNumber()).setValue(serviceRequests);
+        Toast.makeText(DisplayServiceDetails.this, "Request Send Successfully!", Toast.LENGTH_LONG).show();
     }
 }

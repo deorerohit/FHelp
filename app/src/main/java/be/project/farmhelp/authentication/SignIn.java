@@ -25,8 +25,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
-import be.project.farmhelp.UserDashboard;
 import be.project.farmhelp.R;
+import be.project.farmhelp.UserDashboard;
 
 public class SignIn extends AppCompatActivity {
 
@@ -101,7 +101,6 @@ public class SignIn extends AppCompatActivity {
                         String _name = snapshot.child(enteredNumber).child("name").getValue(String.class);
                         String _number = snapshot.child(enteredNumber).child("mobNo").getValue(String.class);
                         String _password = snapshot.child(enteredNumber).child("password").getValue(String.class);
-
 
                         currentUser.createLoginSession(_name, _number, _password);
 
