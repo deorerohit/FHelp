@@ -1,7 +1,11 @@
 package be.project.farmhelp;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -12,6 +16,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -50,6 +55,25 @@ public class GoogleMapActivity extends AppCompatActivity {
         getCurrentLocation();
     }
 
+
+    private Bitmap createCustomMarker(String setName, String setService) {
+        View markerLayout = getLayoutInflater().inflate(R.layout.marker_info_display, null);
+
+        TextView markerNameTV = (TextView) markerLayout.findViewById(R.id.marker_name);
+        TextView markerServiceTV = (TextView) markerLayout.findViewById(R.id.marker_service);
+
+        markerNameTV.setText(setName);
+        markerServiceTV.setText(setService);
+
+        markerLayout.measure(View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED), View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
+        markerLayout.layout(0, 0, markerLayout.getMeasuredWidth(), markerLayout.getMeasuredHeight());
+
+        final Bitmap bitmap = Bitmap.createBitmap(markerLayout.getMeasuredWidth(), markerLayout.getMeasuredHeight(), Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(bitmap);
+        markerLayout.draw(canvas);
+        return bitmap;
+    }
+
     private void getCurrentLocation() {
         Map<Marker, DataFromFirebase> firebaseDataMap = new LinkedHashMap<>();
         mapFragment.getMapAsync(new OnMapReadyCallback() {
@@ -75,10 +99,12 @@ public class GoogleMapActivity extends AppCompatActivity {
                                     DataFromFirebase dataFromFirebase = new DataFromFirebase(name, service, description, contact, rate);
 
                                     LatLng latLng = new LatLng(ds.child("latitude").getValue(Double.class), ds.child("longitude").getValue(Double.class));
-                                    MarkerOptions markerOptions = new MarkerOptions().position(latLng).title(ds.child("name").getValue(String.class));
+                                    MarkerOptions markerOptions = new MarkerOptions()
+                                            .position(latLng)
+                                            .title(ds.child("name").getValue(String.class))
+                                            .icon(BitmapDescriptorFactory.fromBitmap(createCustomMarker(name, service)));
                                     googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 14));
 
-                                    //googleMap.addMarker(markerOptions).showInfoWindow();
                                     Marker marker = googleMap.addMarker(markerOptions);
                                     firebaseDataMap.put(marker, dataFromFirebase);
                                 }
