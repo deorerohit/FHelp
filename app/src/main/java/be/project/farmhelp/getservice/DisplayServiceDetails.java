@@ -87,7 +87,7 @@ public class DisplayServiceDetails extends AppCompatActivity {
     public void sendRequestToServiceProv(View view) {
         DatabaseReference dbReference = FirebaseDatabase.getInstance().getReference("Users");
         dbReference.child(receiversMobNum).child("receivedRequests/" + serviceRequests.getNumber()).setValue(serviceRequests); //receivedRequests
-        dbReference.child(serviceRequests.getNumber()).child("sendRequests/").child(receiversMobNum).setValue(receiversMobNum); //sendRequests
+        dbReference.child(serviceRequests.getNumber()).child("sendRequests/" + receiversMobNum).child("isAccepted").setValue(0); //sendRequests
         Toast.makeText(DisplayServiceDetails.this, "Request Send Successfully!", Toast.LENGTH_LONG).show();
     }
 }

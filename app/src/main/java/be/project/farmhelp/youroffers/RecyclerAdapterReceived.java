@@ -21,7 +21,7 @@ import be.project.farmhelp.dataholders.ServiceRequests;
 
 public class RecyclerAdapterReceived extends RecyclerView.Adapter<RecyclerAdapterReceived.DataHolderClass> {
 
-    private List<ServiceRequests> servciceRequestList = new ArrayList<>();
+    public List<ServiceRequests> servciceRequestList = new ArrayList<>();
 
     private Context mainActivity;
 

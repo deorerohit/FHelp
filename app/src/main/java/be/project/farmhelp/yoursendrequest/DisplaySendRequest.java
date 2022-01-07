@@ -71,7 +71,7 @@ public class DisplaySendRequest extends AppCompatActivity {
                 DataSnapshot sendRequestsSnapshot = snapshot.child(mobNumber + "/sendRequests");
 
                 for (DataSnapshot postSnapShot : sendRequestsSnapshot.getChildren()) {
-                    String currentPost = postSnapShot.getValue(String.class);
+                    String currentPost = postSnapShot.getKey();
 
                     String name = snapshot.child(currentPost + "/name").getValue(String.class);
                     Double latitude = snapshot.child(currentPost + "/latitude").getValue(Double.class);

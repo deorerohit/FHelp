@@ -7,11 +7,13 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
@@ -50,6 +52,31 @@ public class DisplayReceivedRequest extends AppCompatActivity {
         recyclerView.setAdapter(recyclerAdapterReceived);
 
         fetchServiceRequestFromDB();
+
+        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                DatabaseReference dbReference = FirebaseDatabase.getInstance().getReference("Users");
+                int position = viewHolder.getLayoutPosition();
+
+                dbReference.child(recyclerAdapterReceived.servciceRequestList
+                        .get(position)
+                        .getNumber() + "/sendRequests")
+                        .child(mobNumber + "/isAccepted")
+                        .setValue(-1); //editSend Requests
+
+                dbReference.child(mobNumber + "/receivedRequests")
+                        .child(recyclerAdapterReceived.servciceRequestList.get(position).getNumber())
+                        .removeValue(); //delete Received Requests
+
+                Toast.makeText(DisplayReceivedRequest.this, "Request Deleted!", Toast.LENGTH_SHORT).show();
+            }
+        }).attachToRecyclerView(recyclerView);
     }
 
     public void fetchServiceRequestFromDB() {
