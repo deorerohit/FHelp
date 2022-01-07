@@ -85,9 +85,8 @@ public class GoogleMapActivity extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if (snapshot.exists()) {
                             for (DataSnapshot ds : snapshot.getChildren()) {
-
                                 String mobNumber = ds.child("mobNo").getValue(String.class);
-                                boolean isServiceProvider = ds.child("serviceProvider").getValue(Boolean.class);
+                                Boolean isServiceProvider = ds.child("serviceProvider").getValue(Boolean.class);
 
                                 if (sessionMobNumber.equals(mobNumber) || isServiceProvider) {
                                     String name = ds.child("name").getValue(String.class);
@@ -103,7 +102,7 @@ public class GoogleMapActivity extends AppCompatActivity {
                                             .position(latLng)
                                             .title(ds.child("name").getValue(String.class))
                                             .icon(BitmapDescriptorFactory.fromBitmap(createCustomMarker(name, service)));
-                                    googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 14));
+                                    googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10));
 
                                     Marker marker = googleMap.addMarker(markerOptions);
                                     firebaseDataMap.put(marker, dataFromFirebase);

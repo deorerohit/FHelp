@@ -4,6 +4,7 @@ public class ServiceRequests {
     private String name;
     private String number;
     private Double latitude, longitude;
+    public String rate; //for SEND REQUESTS
 
     public Double getLatitude() {
         return latitude;
@@ -28,7 +29,16 @@ public class ServiceRequests {
         this.longitude = longitude;
     }
 
+
     public ServiceRequests() {
+    }
+
+    public String getRate() {
+        return rate;
+    }
+
+    public void setRate(String rate) {
+        this.rate = rate;
     }
 
     public String getName() {

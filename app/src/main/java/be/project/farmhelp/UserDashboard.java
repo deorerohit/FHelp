@@ -42,6 +42,7 @@ import be.project.farmhelp.authentication.SignIn;
 import be.project.farmhelp.provideservice.AddService;
 import be.project.farmhelp.provideservice.YouAreNotProvidingService;
 import be.project.farmhelp.youroffers.DisplayReceivedRequest;
+import be.project.farmhelp.yoursendrequest.DisplaySendRequest;
 
 public class UserDashboard extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -199,6 +200,10 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
 
     public void displayYourOffers(View view) {
         startActivity(new Intent(UserDashboard.this, DisplayReceivedRequest.class));
+    }
+
+    public void callDisplaySendRequest(View view) {
+        startActivity(new Intent(UserDashboard.this, DisplaySendRequest.class));
     }
 
 }

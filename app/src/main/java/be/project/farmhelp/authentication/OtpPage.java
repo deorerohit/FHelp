@@ -45,6 +45,7 @@ public class OtpPage extends AppCompatActivity {
     private FusedLocationProviderClient client;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

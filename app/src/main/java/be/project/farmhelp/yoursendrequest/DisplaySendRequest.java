@@ -1,4 +1,4 @@
-package be.project.farmhelp.youroffers;
+package be.project.farmhelp.yoursendrequest;
 
 import android.os.Bundle;
 import android.view.View;
@@ -24,18 +24,19 @@ import be.project.farmhelp.R;
 import be.project.farmhelp.authentication.SessionManager;
 import be.project.farmhelp.dataholders.ServiceRequests;
 
-public class DisplayReceivedRequest extends AppCompatActivity {
+public class DisplaySendRequest extends AppCompatActivity {
     private String mobNumber;
     SessionManager currentUser;
 
     private RecyclerView recyclerView;
-    private RecyclerAdapterReceived recyclerAdapterReceived;
+    private RecyclerAdapterSend recyclerAdapterSend;
     LinearLayout linearLayoutNoRequest;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_display_received_request);
+        setContentView(R.layout.activity_display_send_request);
 
         currentUser = new SessionManager(getApplicationContext());
         HashMap<String, String> userDetails = currentUser.getUsersDetailsFromSession();
@@ -46,37 +47,51 @@ public class DisplayReceivedRequest extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerView_layout);
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         recyclerView.setHasFixedSize(true);
-        recyclerAdapterReceived = new RecyclerAdapterReceived(getApplicationContext());
-        recyclerView.setAdapter(recyclerAdapterReceived);
+        recyclerAdapterSend = new RecyclerAdapterSend(getApplicationContext());
+        recyclerView.setAdapter(recyclerAdapterSend);
 
-        fetchServiceRequestFromDB();
+        getSendRequestsDetails();
+
     }
 
-    public void fetchServiceRequestFromDB() {
+    public void getSendRequestsDetails() {
+        List<ServiceRequests> sendServiceList = new ArrayList<>();
+        final Query sendRequestQuery = FirebaseDatabase.getInstance().getReference("Users");
 
-        List<ServiceRequests> serviceRequestsList = new ArrayList<>();
-        final Query checkUser = FirebaseDatabase.getInstance().getReference("Users/" + mobNumber + "/receivedRequests");
-
-        checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
+        sendRequestQuery.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.getChildrenCount() == 0) {
+
+                if (snapshot.child(mobNumber+"/sendRequests").getChildrenCount() == 0) {
                     linearLayoutNoRequest.setVisibility(View.VISIBLE);
                 } else {
                     linearLayoutNoRequest.setVisibility(View.INVISIBLE);
                 }
 
-                for (DataSnapshot postSnapShot : snapshot.getChildren()) {
-                    ServiceRequests post = postSnapShot.getValue(ServiceRequests.class);
-                    serviceRequestsList.add(post);
+                DataSnapshot sendRequestsSnapshot = snapshot.child(mobNumber + "/sendRequests");
+
+                for (DataSnapshot postSnapShot : sendRequestsSnapshot.getChildren()) {
+                    String currentPost = postSnapShot.getValue(String.class);
+
+                    String name = snapshot.child(currentPost + "/name").getValue(String.class);
+                    Double latitude = snapshot.child(currentPost + "/latitude").getValue(Double.class);
+                    Double longitude = snapshot.child(currentPost + "/longitude").getValue(Double.class);
+                    String number = snapshot.child(currentPost + "/mobNo").getValue(String.class);
+                    String rate = snapshot.child(currentPost + "/addServiceClassToFirebase/rate").getValue(String.class) + "  ₹";
+
+                    ServiceRequests serviceRequests = new ServiceRequests(name, number, latitude, longitude);
+                    serviceRequests.setRate(rate);
+
+                    sendServiceList.add(serviceRequests);
                 }
-                recyclerAdapterReceived.setServiceList(serviceRequestsList);
+                recyclerAdapterSend.setSendServiceList(sendServiceList);
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(DisplayReceivedRequest.this, "Sorry!! Try again", Toast.LENGTH_SHORT).show();
+                Toast.makeText(DisplaySendRequest.this, "Sorry!! Try again", Toast.LENGTH_SHORT).show();
             }
         });
+
     }
 }

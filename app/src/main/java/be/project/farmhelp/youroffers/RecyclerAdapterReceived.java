@@ -19,25 +19,25 @@ import java.util.Locale;
 import be.project.farmhelp.R;
 import be.project.farmhelp.dataholders.ServiceRequests;
 
-public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.DataHolderClass> {
+public class RecyclerAdapterReceived extends RecyclerView.Adapter<RecyclerAdapterReceived.DataHolderClass> {
 
     private List<ServiceRequests> servciceRequestList = new ArrayList<>();
 
     private Context mainActivity;
 
-    public RecyclerAdapter(Context mainActivity) {
+    public RecyclerAdapterReceived(Context mainActivity) {
         this.mainActivity = mainActivity;
     }
 
     @NonNull
     @Override
-    public RecyclerAdapter.DataHolderClass onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public RecyclerAdapterReceived.DataHolderClass onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.single_element_recycler_layout, parent, false);
         return new DataHolderClass(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerAdapter.DataHolderClass holder, int position) {
+    public void onBindViewHolder(@NonNull RecyclerAdapterReceived.DataHolderClass holder, int position) {
 
 
         ServiceRequests serviceRequests = servciceRequestList.get(position);

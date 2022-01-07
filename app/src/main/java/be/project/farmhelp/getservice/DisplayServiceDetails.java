@@ -53,7 +53,7 @@ public class DisplayServiceDetails extends AppCompatActivity {
         textViewName.setText(intent.getStringExtra("name"));
         editTextService.setText(intent.getStringExtra("service"));
         editTextRate.setText(intent.getStringExtra("rate"));
-        receiversMobNum = "+91 " + intent.getStringExtra("contact");
+        receiversMobNum = intent.getStringExtra("contact");
         editTextContact.setText(receiversMobNum);
         editTextDescription.setText(intent.getStringExtra("desc"));
     }
@@ -86,7 +86,8 @@ public class DisplayServiceDetails extends AppCompatActivity {
 
     public void sendRequestToServiceProv(View view) {
         DatabaseReference dbReference = FirebaseDatabase.getInstance().getReference("Users");
-        dbReference.child(receiversMobNum).child("requests/" + serviceRequests.getNumber()).setValue(serviceRequests);
+        dbReference.child(receiversMobNum).child("receivedRequests/" + serviceRequests.getNumber()).setValue(serviceRequests); //receivedRequests
+        dbReference.child(serviceRequests.getNumber()).child("sendRequests/").child(receiversMobNum).setValue(receiversMobNum); //sendRequests
         Toast.makeText(DisplayServiceDetails.this, "Request Send Successfully!", Toast.LENGTH_LONG).show();
     }
 }
