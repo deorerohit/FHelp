@@ -1,11 +1,13 @@
 package be.project.farmhelp.yoursendrequest;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.location.Address;
 import android.location.Geocoder;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -50,6 +52,13 @@ public class RecyclerAdapterSend extends RecyclerView.Adapter<RecyclerAdapterSen
             holder.textv_recycler_name.setText(serviceRequests.getName());
             holder.textv_recycler_number.setText(serviceRequests.getNumber());
             holder.textv_recycler_location_rate.setText(rate_location);
+
+            if(serviceRequests.getIsAccepted()==1){
+                holder.relativeLayout_recycler.setBackgroundColor(Color.parseColor("#BAFFB4"));
+            }
+            else if(serviceRequests.getIsAccepted()==-1){
+                holder.relativeLayout_recycler.setBackgroundColor(Color.parseColor("#ff9999"));
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -68,9 +77,10 @@ public class RecyclerAdapterSend extends RecyclerView.Adapter<RecyclerAdapterSen
 
     public class DataHolderClass extends RecyclerView.ViewHolder {
 
-        private TextView textv_recycler_name;
-        private TextView textv_recycler_number;
-        private TextView textv_recycler_location_rate;
+        TextView textv_recycler_name;
+        TextView textv_recycler_number;
+        TextView textv_recycler_location_rate;
+        RelativeLayout relativeLayout_recycler;
 
 
         public DataHolderClass(@NonNull View itemView) {
@@ -79,6 +89,7 @@ public class RecyclerAdapterSend extends RecyclerView.Adapter<RecyclerAdapterSen
             textv_recycler_name = itemView.findViewById(R.id.recycler_name);
             textv_recycler_number = itemView.findViewById(R.id.recycler_number);
             textv_recycler_location_rate = itemView.findViewById(R.id.recycler_location);
+            relativeLayout_recycler = itemView.findViewById(R.id.recycler_relative_layout);
         }
     }
 }

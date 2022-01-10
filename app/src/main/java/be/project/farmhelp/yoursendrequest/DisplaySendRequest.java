@@ -62,7 +62,7 @@ public class DisplaySendRequest extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                if (snapshot.child(mobNumber+"/sendRequests").getChildrenCount() == 0) {
+                if (snapshot.child(mobNumber + "/sendRequests").getChildrenCount() == 0) {
                     linearLayoutNoRequest.setVisibility(View.VISIBLE);
                 } else {
                     linearLayoutNoRequest.setVisibility(View.INVISIBLE);
@@ -78,9 +78,13 @@ public class DisplaySendRequest extends AppCompatActivity {
                     Double longitude = snapshot.child(currentPost + "/longitude").getValue(Double.class);
                     String number = snapshot.child(currentPost + "/mobNo").getValue(String.class);
                     String rate = snapshot.child(currentPost + "/addServiceClassToFirebase/rate").getValue(String.class) + "  ₹";
+                    Integer isAccepted = snapshot.child(mobNumber + "/sendRequests/" + currentPost + "/isAccepted").getValue(Integer.class);
 
                     ServiceRequests serviceRequests = new ServiceRequests(name, number, latitude, longitude);
                     serviceRequests.setRate(rate);
+                    serviceRequests.setIsAccepted(isAccepted);
+
+
 
                     sendServiceList.add(serviceRequests);
                 }

@@ -5,6 +5,25 @@ public class ServiceRequests {
     private String number;
     private Double latitude, longitude;
     public String rate; //for SEND REQUESTS
+    public Integer isAccepted;
+
+    public ServiceRequests() {
+    }
+
+    public ServiceRequests(String name, String number, Double latitude, Double longitude) {
+        this.name = name;
+        this.number = number;
+        this.latitude = latitude;
+        this.longitude = longitude;
+    }
+
+    public Integer getIsAccepted() {
+        return isAccepted;
+    }
+
+    public void setIsAccepted(Integer isAccepted) {
+        this.isAccepted = isAccepted;
+    }
 
     public Double getLatitude() {
         return latitude;
@@ -22,16 +41,6 @@ public class ServiceRequests {
         this.longitude = longitude;
     }
 
-    public ServiceRequests(String name, String number, Double latitude, Double longitude) {
-        this.name = name;
-        this.number = number;
-        this.latitude = latitude;
-        this.longitude = longitude;
-    }
-
-
-    public ServiceRequests() {
-    }
 
     public String getRate() {
         return rate;

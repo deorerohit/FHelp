@@ -53,7 +53,7 @@ public class DisplayReceivedRequest extends AppCompatActivity {
 
         fetchServiceRequestFromDB();
 
-        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
+        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
             @Override
             public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
                 return false;
@@ -64,17 +64,27 @@ public class DisplayReceivedRequest extends AppCompatActivity {
                 DatabaseReference dbReference = FirebaseDatabase.getInstance().getReference("Users");
                 int position = viewHolder.getLayoutPosition();
 
-                dbReference.child(recyclerAdapterReceived.servciceRequestList
-                        .get(position)
-                        .getNumber() + "/sendRequests")
-                        .child(mobNumber + "/isAccepted")
-                        .setValue(-1); //editSend Requests
+                if (direction == ItemTouchHelper.LEFT) {
+                    dbReference.child(recyclerAdapterReceived.servciceRequestList
+                            .get(position)
+                            .getNumber() + "/sendRequests")
+                            .child(mobNumber + "/isAccepted")
+                            .setValue(-1); //editSend Requests
 
-                dbReference.child(mobNumber + "/receivedRequests")
-                        .child(recyclerAdapterReceived.servciceRequestList.get(position).getNumber())
-                        .removeValue(); //delete Received Requests
+                    dbReference.child(mobNumber + "/receivedRequests")
+                            .child(recyclerAdapterReceived.servciceRequestList.get(position).getNumber())
+                            .removeValue(); //delete Received Requests
 
-                Toast.makeText(DisplayReceivedRequest.this, "Request Deleted!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DisplayReceivedRequest.this, "Request Deleted!", Toast.LENGTH_SHORT).show();
+                } else if (direction == ItemTouchHelper.RIGHT) {
+                    dbReference.child(recyclerAdapterReceived.servciceRequestList
+                            .get(position)
+                            .getNumber() + "/sendRequests")
+                            .child(mobNumber + "/isAccepted")
+                            .setValue(1); //editSend Requests
+                    Toast.makeText(DisplayReceivedRequest.this, "Request Accepted", Toast.LENGTH_SHORT).show();
+                }
+                fetchServiceRequestFromDB();
             }
         }).attachToRecyclerView(recyclerView);
     }
