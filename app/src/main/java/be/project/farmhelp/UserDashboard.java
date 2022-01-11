@@ -53,7 +53,7 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
     private SupportMapFragment mapFragment;
     private FusedLocationProviderClient client;
     String mobNumber;
-    TextView mainMenuTextView, mainMenuNumber;
+    TextView headerNameTV, headerServiceTV;
     public static final String NUMBER_INTENT_KEY = "numberIntentKey";
 
     @Override
@@ -62,6 +62,8 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
         setContentView(R.layout.activity_user_dashboard);
 
 
+        headerNameTV = findViewById(R.id.header_name);
+        headerServiceTV = findViewById(R.id.header_service);
         navigationView = findViewById(R.id.navigation_view);
         drawerLayout = findViewById(R.id.drawer_layout);
         menuButton = findViewById(R.id.menu_button);
@@ -72,14 +74,30 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
         HashMap<String, String> userDetails = currentUser.getUsersDetailsFromSession();
         mobNumber = userDetails.get(SessionManager.KEY_MOBILE);
 
-        View headerView = navigationView.getHeaderView(0);
-        mainMenuTextView = headerView.findViewById(R.id.menutitle);
-        mainMenuTextView.setText(userDetails.get(SessionManager.KEY_NAME));
-        mainMenuNumber = headerView.findViewById(R.id.menuslogan);
-        mainMenuNumber.setText(userDetails.get(SessionManager.KEY_MOBILE));
+        headerNameTV.setText(userDetails.get(SessionManager.KEY_NAME));
 
+        fillDataInHeader(userDetails);
         loadLocationOnMap();
         navigationDrawer();
+    }
+
+    public void fillDataInHeader(HashMap<String, String> userDetails) {
+        final Query checkUser = FirebaseDatabase.getInstance().getReference("Users").orderByChild("mobNo").equalTo(mobNumber);
+
+        checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String service = snapshot.child(mobNumber).child("addServiceClassToFirebase/service").getValue(String.class);
+                if (service == null)
+                    service = "Farmer";
+                headerServiceTV.setText(service + " | " + userDetails.get(SessionManager.KEY_MOBILE));
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(UserDashboard.this, "Sorry!! Try again", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void loadLocationOnMap() {

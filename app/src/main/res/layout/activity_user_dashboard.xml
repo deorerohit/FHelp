@@ -21,20 +21,58 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/menu_button"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/linearLayout_header"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="10dp"
-            android:hapticFeedbackEnabled="true"
-            android:src="@drawable/three_lines" />
+            android:background="@color/purple_700"
+            android:elevation="2dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="15dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="15dp"
+            android:paddingBottom="10dp">
+
+            <ImageView
+                android:id="@+id/menu_button"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:hapticFeedbackEnabled="true"
+                android:src="@drawable/icons8_male_user_125px_2" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:orientation="vertical"
+                android:textAlignment="center">
+
+                <TextView
+                    android:id="@+id/header_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:includeFontPadding="false"
+                    android:text="Micheal"
+                    android:textColor="@color/white"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/header_service"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:includeFontPadding="false"
+                    android:textColor="@color/teal_200" />
+            </LinearLayout>
+        </LinearLayout>
+
 
         <LinearLayout
             android:id="@+id/card_view_linear_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/menu_button"
+            android:layout_below="@id/linearLayout_header"
             android:orientation="vertical">
 
             <LinearLayout
@@ -55,8 +93,8 @@
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:padding="5dp"
-                        android:onClick="callMapActivity">
+                        android:onClick="callMapActivity"
+                        android:padding="5dp">
 
                         <ImageView
                             android:layout_width="wrap_content"
@@ -120,8 +158,8 @@
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:padding="5dp"
-                        android:onClick="displayYourOffers">
+                        android:onClick="displayYourOffers"
+                        android:padding="5dp">
 
                         <ImageView
                             android:layout_width="wrap_content"
@@ -193,8 +231,8 @@
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:padding="5dp"
-                        android:onClick="callDisplaySendRequest">
+                        android:onClick="callDisplaySendRequest"
+                        android:padding="5dp">
 
                         <ImageView
                             android:layout_width="wrap_content"
@@ -275,8 +313,8 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="15dp"
             android:layout_weight="1"
-            android:onClick="updateLocation"
             android:fontFamily="sans-serif-black"
+            android:onClick="updateLocation"
             android:padding="10dp"
             android:text="Update My Location"
             android:textAllCaps="false"
