@@ -10,7 +10,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -25,6 +27,7 @@ import java.util.List;
 import be.project.farmhelp.R;
 import be.project.farmhelp.authentication.SessionManager;
 import be.project.farmhelp.dataholders.ServiceRequests;
+import es.dmoral.toasty.Toasty;
 
 public class DisplayReceivedRequest extends AppCompatActivity {
     private String mobNumber;
@@ -33,6 +36,7 @@ public class DisplayReceivedRequest extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecyclerAdapterReceived recyclerAdapterReceived;
     LinearLayout linearLayoutNoRequest;
+    SwipeRefreshLayout swipeRefreshLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +48,7 @@ public class DisplayReceivedRequest extends AppCompatActivity {
         mobNumber = userDetails.get(SessionManager.KEY_MOBILE);
 
         linearLayoutNoRequest = findViewById(R.id.no_request_layout);
+        swipeRefreshLayout = findViewById(R.id.refreshLayout_received);
 
         recyclerView = findViewById(R.id.recyclerView_layout);
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
@@ -52,6 +57,19 @@ public class DisplayReceivedRequest extends AppCompatActivity {
         recyclerView.setAdapter(recyclerAdapterReceived);
 
         fetchServiceRequestFromDB();
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                fetchServiceRequestFromDB();
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
+
+        View parentLayout = findViewById(android.R.id.content);
+        Snackbar.make(parentLayout, "Swipe Left : Delete Request\nSwipe Right : Accept Request", Snackbar.LENGTH_LONG)
+                .setBackgroundTint(getResources().getColor(R.color.purple_700))
+                .show();
 
         new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
             @Override
@@ -65,9 +83,7 @@ public class DisplayReceivedRequest extends AppCompatActivity {
                 int position = viewHolder.getLayoutPosition();
 
                 if (direction == ItemTouchHelper.LEFT) {
-                    dbReference.child(recyclerAdapterReceived.servciceRequestList
-                            .get(position)
-                            .getNumber() + "/sendRequests")
+                    dbReference.child(recyclerAdapterReceived.servciceRequestList.get(position).getNumber() + "/sendRequests")
                             .child(mobNumber + "/isAccepted")
                             .setValue(-1); //editSend Requests
 
@@ -75,19 +91,22 @@ public class DisplayReceivedRequest extends AppCompatActivity {
                             .child(recyclerAdapterReceived.servciceRequestList.get(position).getNumber())
                             .removeValue(); //delete Received Requests
 
-                    Toast.makeText(DisplayReceivedRequest.this, "Request Deleted!", Toast.LENGTH_SHORT).show();
+                    Toasty.error(DisplayReceivedRequest.this, "Request Deleted!", Toast.LENGTH_LONG, true).show();
+
                 } else if (direction == ItemTouchHelper.RIGHT) {
                     dbReference.child(recyclerAdapterReceived.servciceRequestList
                             .get(position)
                             .getNumber() + "/sendRequests")
                             .child(mobNumber + "/isAccepted")
                             .setValue(1); //editSend Requests
-                    Toast.makeText(DisplayReceivedRequest.this, "Request Accepted", Toast.LENGTH_SHORT).show();
+
+                    Toasty.success(DisplayReceivedRequest.this, "Request Accepted!", Toast.LENGTH_LONG, true).show();
                 }
                 fetchServiceRequestFromDB();
             }
         }).attachToRecyclerView(recyclerView);
     }
+
 
     public void fetchServiceRequestFromDB() {
 

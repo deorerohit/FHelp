@@ -23,7 +23,7 @@ import be.project.farmhelp.dataholders.ServiceRequests;
 
 public class RecyclerAdapterSend extends RecyclerView.Adapter<RecyclerAdapterSend.DataHolderClass> {
 
-    private List<ServiceRequests> sendRequestList = new ArrayList<>();
+    public List<ServiceRequests> sendRequestList = new ArrayList<>();
     private Context mainActivity;
 
     public RecyclerAdapterSend(Context mainActivity) {
