@@ -4,6 +4,20 @@
     android:layout_height="200dp"
     android:background="@color/teal_200">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="@font/raleway_black"
+        android:includeFontPadding="false"
+        android:text="V2.0"
+        android:textColor="#4F585123"
+        android:textSize="70sp"
+        android:textStyle="bold" />
+
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -13,29 +27,27 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="40dp"
         android:layout_marginBottom="0dp"
-        android:elevation="2dp"
-        android:orientation="horizontal"
-        android:paddingBottom="0dp">
+        android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="0dp"
-            android:fontFamily="sans-serif-black"
+            android:includeFontPadding="false"
             android:paddingBottom="0dp"
             android:text="@string/farm"
             android:textColor="#2A8E2E"
-            android:textSize="40sp" />
+            android:textSize="40sp"
+            android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="0dp"
-            android:fontFamily="sans-serif-black"
+            android:includeFontPadding="false"
             android:paddingBottom="0dp"
             android:text="@string/help"
             android:textColor="@color/purple_200"
-            android:textSize="40sp" />
+            android:textSize="40sp"
+            android:textStyle="bold" />
     </LinearLayout>
 
     <TextView
@@ -45,13 +57,12 @@
         android:layout_alignParentBottom="true"
         android:layout_gravity="center_horizontal"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="0dp"
         android:layout_marginBottom="20dp"
-        android:elevation="2dp"
-        android:fontFamily="@font/reemkufiregular"
-        android:paddingTop="0dp"
+        android:fontFamily="cursive"
+        android:includeFontPadding="false"
         android:text="@string/farming_made_easy"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
 
 </RelativeLayout>

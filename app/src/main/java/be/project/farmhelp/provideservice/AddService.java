@@ -95,7 +95,7 @@ public class AddService extends AppCompatActivity {
         dbReference.child(mobNumber).child("addServiceClassToFirebase/contact").setValue("");
         dbReference.child(mobNumber).child("addServiceClassToFirebase/description").setValue("");
         dbReference.child(mobNumber).child("addServiceClassToFirebase/rate").setValue("");
-        dbReference.child(mobNumber).child("addServiceClassToFirebase/service").setValue("");
+        dbReference.child(mobNumber).child("addServiceClassToFirebase/service").setValue("User");
 
         NavUtils.navigateUpFromSameTask(AddService.this);
         Toast.makeText(AddService.this, "Service removed", Toast.LENGTH_LONG).show();

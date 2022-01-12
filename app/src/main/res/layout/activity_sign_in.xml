@@ -21,9 +21,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="0dp"
-            android:fontFamily="sans-serif-black"
-            android:paddingBottom="0dp"
+            android:includeFontPadding="false"
             android:text="@string/farm"
             android:textColor="#2A8E2E"
             android:textSize="40sp" />
@@ -31,9 +29,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="0dp"
-            android:fontFamily="sans-serif-black"
-            android:paddingBottom="0dp"
+            android:includeFontPadding="false"
             android:text="@string/help"
             android:textColor="@color/purple_200"
             android:textSize="40sp" />
@@ -43,12 +39,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="0dp"
         android:layout_marginBottom="40dp"
         android:fontFamily="cursive"
-        android:paddingTop="0dp"
+        android:includeFontPadding="false"
         android:text="@string/farming_made_easy"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"

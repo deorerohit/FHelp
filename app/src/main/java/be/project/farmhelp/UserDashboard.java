@@ -88,8 +88,6 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String service = snapshot.child(mobNumber).child("addServiceClassToFirebase/service").getValue(String.class);
-                if (service == null)
-                    service = "Farmer";
                 headerServiceTV.setText(service + " | " + userDetails.get(SessionManager.KEY_MOBILE));
             }
 

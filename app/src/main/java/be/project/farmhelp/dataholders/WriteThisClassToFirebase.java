@@ -15,7 +15,7 @@ public class WriteThisClassToFirebase {
         this.longitude = longitude;
         this.isServiceProvider = false;
 
-        serviceDataInFirebase = new ServiceDataInFirebase("", "", "", "");
+        serviceDataInFirebase = new ServiceDataInFirebase("User", "", "", "");
     }
 
     public ServiceDataInFirebase getAddServiceClassToFirebase() {
