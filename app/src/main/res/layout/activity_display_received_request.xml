@@ -13,7 +13,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
-        android:text="You got below request from farmers."
+        android:text="Request's for you from farmers."
         android:textColor="@color/purple_700"
         android:textSize="24sp"
         android:textStyle="bold" />

@@ -30,12 +30,11 @@
     <string-array name="services_arrays">
         <item>Electrician</item>
         <item>Mechanic</item>
-        <item>Plumber</item>
-        <item>France</item>
-        <item>Italy</item>
-        <item>Singapore</item>
-        <item>New Zealand</item>
-        <item>India</item>
+        <item>Plumbing</item>
+        <item>Medical Service</item>
+        <item>Transportation</item>
+        <item>Farming equipment</item>
+
     </string-array>
 
 </resources>
